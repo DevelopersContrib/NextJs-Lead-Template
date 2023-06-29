@@ -1,113 +1,351 @@
-import Image from 'next/image'
+"use client"
+import Navigation from '../components/navigation';
+import Footer from '../components/footer';
+import Image from 'next/image';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUsers, faUserCog, faCogs, faGlobe, faCircleNotch } from '@fortawesome/free-solid-svg-icons';
+// Import Swiper React components
+import { Swiper, SwiperSlide } from "swiper/react";
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
+// import required modules
+import { Pagination } from "swiper";
+
 
 export default function Home() {
+  const background = 'https://cdn.vnoc.com/background/tech4.jpg';
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <>
+      <Navigation />
+      <section
+        style={{ backgroundImage: `url('${background}')` }}
+        className="tw-min-h-[calc(100vh-40px)] tw-bg-cover tw-bg-no-repeat tw-relative tw-text-white tw-bg-[50%] tw-py-12 tw-flex tw-w-full tw-items-center"
+      >
+        <div className="tw-bg-[rgba(0,0,0,0.55)] tw-top-0 tw-left-0 tw-right-0 tw-bottom-0 tw-absolute"></div>
+        <div className="container tw-relative">
+          <div className="row tw-mb-8">
+            <div className="col-xl-12 tw-text-center">
+              <h1 className="tw-text-7xl tw-break-all font-800 mb-3">Repologic.com</h1>
+              <h5 className='tw-font-semibold text-capitalize mb-3'>
+                Join Our Exclusive Community Of Like Minded People On Repologic.Com
+              </h5>
+            </div>
+            <div className="col-xl-12">
+              <div className="row">
+                <div className="col-xl-8 offset-xl-2">
+                  <div className="tw-bg-[rgba(0,0,0,0.75)] tw-p-8 tw-rounded-lg">
+                    {/* Start:: Forms */}
+                    <div className="">
+                      <div className="input-group input-group-lg mb-3">
+                        <input type="text" className="form-control" placeholder="Email address..." />
+                        <button
+                          className="btn btn-danger tw-px-[3rem!important]"
+                          type="button"
+                        >Submit</button>
+                      </div>
+                    </div>
+                    {/* Start:: Thank you message */}
+                    <div className='text-center tw-hidden'>
+                      <FontAwesomeIcon icon={faCircleNotch} spin className='tw-w-8 tw-h-[2rem!important]' />
+                      <h3>Thanks, your spot is reserved!</h3>
+                      <p>
+                        Share repologic.com with you friends to move up in line and reserve your username.
+                      </p>
+                      <div className="mb-3">
+                        <a href="#" className="btn btn-warning">Continue to Follow repologic.com Brand</a>
+                      </div>
+                    </div>
+                    <p className="text-center mb-0 small text-secondary">
+                      We envision people around the world with complementary skills, passion, time and resources coworking online with targeted premium assets just like repologic.com
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800 hover:dark:bg-opacity-30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore the Next.js 13 playground.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+      </section>
+      <section className='tw-py-24'>
+        <div className="container">
+          <div className="row lg:tw-items-center">
+            <div className="col-xl-6 mb-4 mb-xl-0">
+              <Image
+                src="https://cdn.vnoc.com/background/contrib/why-us.png"
+                width={470}
+                height={496}
+                alt=''
+                className='img-fluid'
+              />
+            </div>
+            <div className="col-xl-6 mb-4 mb-xl-0">
+              <h2 className='tw-font-extrabold tw-text-5xl mb-3'>
+                Follow, Build, and Help Launch
+              </h2>
+              <p className='text-secondary'>
+                Follow repologic.com and other great ventures on the Contrib platform.
+              </p>
+              <p className='text-secondary'>
+                Build repologic.com and Help cofound a relevant new Startup, Part-Time.
+              </p>
+              <p className='text-secondary'>
+                Launch repologic.com and you could be front and center in the process. Launch domain.com with us today!
+              </p>
+              <a href="https://www.contrib.com/signup/follow/repologic.com" target="_blank" className="btn btn-primary btn-lg">
+                Learn About repologic.com
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section className='tw-py-24 bg-light'>
+        <div className="container">
+          <div className="row">
+            <div className="col-xl-12">
+              <div className="title-center-circle">
+                <h2 className='tw-font-extrabold tw-text-5xl text-uppercase text-center'>
+                  repologic.com team
+                </h2>
+              </div>
+            </div>
+          </div>
+          <div className="row align-items-center mt-5">
+            <div className="col-xl-4">
+              <h3 className='tw-font-extrabold mb-3 text-secondary'>Our Awesome Team that Help You to Make Right Choice</h3>
+              <div className="tw-bg-[#EEEDED] tw-p-12 tw-rounded-md tw-mb-4 tw-mt-8">
+                <div className="tw-d-block mb-3">
+                  <FontAwesomeIcon icon={faUsers} className="tw-w-20 tw-h-[5rem!important] tw-text-blue-500" />
+                </div>
+                <div className='text-secondary'>
+                  <strong>repologic.com</strong> is a bit different than most startups. We are small, diverse team working remotely and loving what we do. We only cowork with others who also have this same passion.
+                </div>
+              </div>
+            </div>
+            <div className="col-xl-8">
+              <div className="row">
+                <div className="col-xl-6">
+                  <div className="tw-bg-[#EEEDED] tw-p-12 tw-rounded-md tw-mb-8 tw-mt-8">
+                    <div className="tw-d-block mb-3">
+                      <FontAwesomeIcon icon={faUserCog} className="tw-w-20 tw-h-[5rem!important] tw-text-blue-500" />
+                    </div>
+                    <div className='text-secondary'>
+                      <strong>repologic.com</strong> seeks to contract and hire the best people and then trust them: it&ampos;s the thinking behind the work at their own time policy.
+                    </div>
+                  </div>
+                </div>
+                <div className="col-xl-6">
+                  <div className="tw-bg-[#EEEDED] tw-p-12 tw-rounded-md tw-mb-4">
+                    <div className="tw-d-block mb-3">
+                      <FontAwesomeIcon icon={faCogs} className="tw-w-20 tw-h-[5rem!important] tw-text-blue-500" />
+                    </div>
+                    <div className='text-secondary'>
+                      The <strong>repologic.com</strong> team loves building things and focus on being the most productive individual, not the amount of time spent in the office.
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <p className='text-secondary'>
+                We put a lot of effort into making repologic.com a fun place to work for people who like getting things done. So if you&apos;re game with this then enter your email address and be a part of the global team.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section className="tw-py-24 bg-white">
+        <div className="container">
+          <div className="row">
+            <div className="col-xl-12">
+              <div className="title-center-circle">
+                <h2 className='tw-font-extrabold tw-text-5xl text-uppercase text-center'>
+                  OUR TOP BRANDS
+                </h2>
+              </div>
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-xl-12">
+              <Swiper
+                slidesPerView={1}
+                spaceBetween={30}
+                pagination={{
+                  clickable: true,
+                }}
+                breakpoints={{
+                  1024: {
+                    slidesPerView: 3,
+                    spaceBetween: 40,
+                  },
+                }}
+                modules={[Pagination]}
+                className="mySwiper"
+              >
+                <SwiperSlide className='tw-px-4 tw-py-12 tw-rounded-md'>
+                  <a href="#" className='tw-no-underline tw-inline-block'>
+                    <Image
+                      src="https://cdn.vnoc.com/logos/logo-Applications.png"
+                      width={0}
+                      height={0}
+                      sizes="100vw"
+                      className='img-fluid'
+                      alt=""
+                      priority={true}
+                    />
+                  </a>
+                  <h4 className='tw-capitalize'>
+                    applications.com
+                  </h4>
+                  <p>
+                    Join our exclusive community of like minded people on
+                  </p>
+                  <div className='text-center tw-space-x-2 w-100'>
+                    <a href="#" className="btn btn-success">Visit</a>
+                    <a href="#" className="btn btn-success">Details</a>
+                  </div>
+                </SwiperSlide>
+                <SwiperSlide className='tw-px-4 tw-py-12 tw-rounded-md'>
+                  <a href="#" className='tw-no-underline tw-inline-block'>
+                    <Image
+                      src="https://cdn.vnoc.com/logos/logo-SocialBar1.png"
+                      width={0}
+                      height={0}
+                      sizes="100vw"
+                      className='img-fluid'
+                      alt=""
+                      priority={true}
+                    />
+                  </a>
+                  <h4 className='tw-capitalize'>
+                    socialbar.com
+                  </h4>
+                  <p>
+                    Join our exclusive community of like minded people on
+                  </p>
+                  <div className='text-center tw-space-x-2 w-100'>
+                    <a href="#" className="btn btn-success">Visit</a>
+                    <a href="#" className="btn btn-success">Details</a>
+                  </div>
+                </SwiperSlide>
+                <SwiperSlide className='tw-px-4 tw-py-12 tw-rounded-md'>
+                  <a href="#" className='tw-no-underline tw-inline-block'>
+                    <Image
+                      src="https://vnoclogos.s3-us-west-1.amazonaws.com/logo-digitalcast2.png"
+                      width={0}
+                      height={0}
+                      sizes="100vw"
+                      className='img-fluid'
+                      alt=""
+                      priority={true}
+                    />
+                  </a>
+                  <h4 className='tw-capitalize'>
+                    digitalcast.com
+                  </h4>
+                  <p>
+                    Join our exclusive community of like minded people on
+                  </p>
+                  <div className='text-center tw-space-x-2 w-100'>
+                    <a href="#" className="btn btn-success">Visit</a>
+                    <a href="#" className="btn btn-success">Details</a>
+                  </div>
+                </SwiperSlide>
+                <SwiperSlide className='tw-px-4 tw-py-12 tw-rounded-md'>
+                  <a href="#" className='tw-no-underline tw-inline-block'>
+                    <Image
+                      src="https://cdn.vnoc.com/logos/logo-handyman.png"
+                      width={0}
+                      height={0}
+                      sizes="100vw"
+                      className='img-fluid'
+                      alt=""
+                      priority={true}
+                    />
+                  </a>
+                  <h4 className='tw-capitalize'>
+                    handyman.com
+                  </h4>
+                  <p>
+                    Join our exclusive community of like minded people on
+                  </p>
+                  <div className='text-center tw-space-x-2 w-100'>
+                    <a href="#" className="btn btn-success">Visit</a>
+                    <a href="#" className="btn btn-success">Details</a>
+                  </div>
+                </SwiperSlide>
+              </Swiper>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section className="tw-py-24 bg-light">
+        <div className="container">
+          <div className="row mb-3">
+            <div className="col-xl-4 mb-3">
+              <div className="d-flex">
+                <div className="tw-mr-4">
+                  <FontAwesomeIcon icon={faGlobe} className="tw-w-8 tw-h-[2rem!important] text-secondary" />
+                </div>
+                <div className="">
+                  <h5 className="tw-font-semibold">Contrib Marketplace</h5>
+                  <p className='mb-0'>
+                    Browse Jobs, Ideas and Micro Tasks.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="col-xl-4 mb-3">
+              <div className="d-flex">
+                <div className="tw-mr-4">
+                  <FontAwesomeIcon icon={faGlobe} className="tw-w-8 tw-h-[2rem!important] text-secondary" />
+                </div>
+                <div className="">
+                  <h5 className="tw-font-semibold">Contribute</h5>
+                  <p className='mb-0'>
+                    Contribute using your skills, services, apps and/or capital.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="col-xl-4 mb-3">
+              <div className="d-flex">
+                <div className="tw-mr-4">
+                  <FontAwesomeIcon icon={faGlobe} className="tw-w-8 tw-h-[2rem!important] text-secondary" />
+                </div>
+                <div className="">
+                  <h5 className="tw-font-semibold">Crypto Marketplace</h5>
+                  <p className='mb-0'>
+                    Contribute to blockchain projects on premium urls today
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-xl-12">
+              <div className="tw-shadow-[-4px_49px_79px_0px_rgba(0,0,0,0.15)] tw-p-14 tw-rounded-md tw-bg-white">
+                <div className="row gy-3">
+                  <div className="col-xl-3 d-flex tw-flex-col text-center">
+                    <h2 className="tw-font-extrabold tw-text-3xl">5250</h2>
+                    <div>NO. OF MEMBERS</div>
+                  </div>
+                  <div className="col-xl-3 d-flex tw-flex-col text-center">
+                    <h2 className="tw-font-extrabold tw-text-3xl">310</h2>
+                    <div>NO. OF CAMPAIGNS</div>
+                  </div>
+                  <div className="col-xl-3 d-flex tw-flex-col text-center">
+                    <h2 className="tw-font-extrabold tw-text-3xl">395</h2>
+                    <div>REWARDS GIVEN</div>
+                  </div>
+                  <div className="col-xl-3 d-flex tw-flex-col text-center">
+                    <h2 className="tw-font-extrabold tw-text-3xl">3599072</h2>
+                    <div>TOTAL IMPRESSIONS</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <Footer />
+    </>
   )
 }
