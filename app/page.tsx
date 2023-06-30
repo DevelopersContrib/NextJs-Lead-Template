@@ -1,6 +1,7 @@
 "use client"
 import Navigation from '../components/navigation';
 import Footer from '../components/footer';
+import Logo from '../components/logo';
 import Image from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUsers, faUserCog, faCogs, faGlobe, faCircleNotch } from '@fortawesome/free-solid-svg-icons';
@@ -11,10 +12,16 @@ import "swiper/css";
 import "swiper/css/pagination";
 // import required modules
 import { Pagination } from "swiper";
+import { getData, getDomain } from '../lib/data';
 
 
-export default function Home() {
-  const background = 'https://cdn.vnoc.com/background/tech4.jpg';
+export default async function Home() {
+  const c = await getData();
+  const domain = await getDomain();
+  const background = c.data.background_url!==null?c.data.background_url:'https://cdn.vnoc.com/background/tech4.jpg';
+  const description = c.data.description;
+  const title = c.data.title;
+  const follow_link = "https://www.contrib.com/signup/follow/"+domain;
   return (
     <>
       <Navigation />
@@ -26,9 +33,9 @@ export default function Home() {
         <div className="container tw-relative">
           <div className="row tw-mb-8">
             <div className="col-xl-12 tw-text-center">
-              <h1 className="tw-text-7xl tw-break-all font-800 mb-3">Repologic.com</h1>
+            <Logo />
               <h5 className='tw-font-semibold text-capitalize mb-3'>
-                Join Our Exclusive Community Of Like Minded People On Repologic.Com
+                {title}
               </h5>
             </div>
             <div className="col-xl-12">
@@ -50,14 +57,14 @@ export default function Home() {
                       <FontAwesomeIcon icon={faCircleNotch} spin className='tw-w-8 tw-h-[2rem!important]' />
                       <h3>Thanks, your spot is reserved!</h3>
                       <p>
-                        Share repologic.com with you friends to move up in line and reserve your username.
+                        Share {domain} with you friends to move up in line and reserve your username.
                       </p>
                       <div className="mb-3">
-                        <a href="#" className="btn btn-warning">Continue to Follow repologic.com Brand</a>
+                        <a href={follow_link} className="btn btn-warning">Continue to Follow {domain} Brand</a>
                       </div>
                     </div>
                     <p className="text-center mb-0 small text-secondary">
-                      We envision people around the world with complementary skills, passion, time and resources coworking online with targeted premium assets just like repologic.com
+                    {description}
                     </p>
                   </div>
                 </div>
@@ -83,16 +90,16 @@ export default function Home() {
                 Follow, Build, and Help Launch
               </h2>
               <p className='text-secondary'>
-                Follow repologic.com and other great ventures on the Contrib platform.
+                Follow {domain} and other great ventures on the Contrib platform.
               </p>
               <p className='text-secondary'>
-                Build repologic.com and Help cofound a relevant new Startup, Part-Time.
+                Build {domain} and Help cofound a relevant new Startup, Part-Time.
               </p>
               <p className='text-secondary'>
-                Launch repologic.com and you could be front and center in the process. Launch domain.com with us today!
+                Launch {domain} and you could be front and center in the process. Launch domain.com with us today!
               </p>
-              <a href="https://www.contrib.com/signup/follow/repologic.com" target="_blank" className="btn btn-primary btn-lg">
-                Learn About repologic.com
+              <a href={follow_link} target="_blank" className="btn btn-primary btn-lg">
+                Learn About {domain}
               </a>
             </div>
           </div>
@@ -104,7 +111,7 @@ export default function Home() {
             <div className="col-xl-12">
               <div className="title-center-circle">
                 <h2 className='tw-font-extrabold tw-text-5xl text-uppercase text-center'>
-                  repologic.com team
+                  {domain} team
                 </h2>
               </div>
             </div>
@@ -117,7 +124,7 @@ export default function Home() {
                   <FontAwesomeIcon icon={faUsers} className="tw-w-20 tw-h-[5rem!important] tw-text-blue-500" />
                 </div>
                 <div className='text-secondary'>
-                  <strong>repologic.com</strong> is a bit different than most startups. We are small, diverse team working remotely and loving what we do. We only cowork with others who also have this same passion.
+                  <strong>{domain}</strong> is a bit different than most startups. We are small, diverse team working remotely and loving what we do. We only cowork with others who also have this same passion.
                 </div>
               </div>
             </div>
@@ -129,7 +136,7 @@ export default function Home() {
                       <FontAwesomeIcon icon={faUserCog} className="tw-w-20 tw-h-[5rem!important] tw-text-blue-500" />
                     </div>
                     <div className='text-secondary'>
-                      <strong>repologic.com</strong> seeks to contract and hire the best people and then trust them: it&ampos;s the thinking behind the work at their own time policy.
+                      <strong>{domain}</strong> seeks to contract and hire the best people and then trust them: it&ampos;s the thinking behind the work at their own time policy.
                     </div>
                   </div>
                 </div>
@@ -139,13 +146,13 @@ export default function Home() {
                       <FontAwesomeIcon icon={faCogs} className="tw-w-20 tw-h-[5rem!important] tw-text-blue-500" />
                     </div>
                     <div className='text-secondary'>
-                      The <strong>repologic.com</strong> team loves building things and focus on being the most productive individual, not the amount of time spent in the office.
+                      The <strong>{domain}</strong> team loves building things and focus on being the most productive individual, not the amount of time spent in the office.
                     </div>
                   </div>
                 </div>
               </div>
               <p className='text-secondary'>
-                We put a lot of effort into making repologic.com a fun place to work for people who like getting things done. So if you&apos;re game with this then enter your email address and be a part of the global team.
+                We put a lot of effort into making {domain} a fun place to work for people who like getting things done. So if you&apos;re game with this then enter your email address and be a part of the global team.
               </p>
             </div>
           </div>

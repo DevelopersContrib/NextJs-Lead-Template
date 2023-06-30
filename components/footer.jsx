@@ -3,7 +3,13 @@ import { faTwitter, faFacebookF, faLinkedinIn } from '@fortawesome/free-brands-s
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import Image from 'next/image';
 import Link from 'next/link';
-const footer = () => {
+import {  getData, getDomain } from '../lib/data';
+
+export default async function Footer() {
+  const domain = await getDomain();
+  const data = await getData();
+  const title = data.data.title;
+  const contri_link = 'https://www.contrib.com/to/'+domain;
   return (
     <>
       <footer className='tw-text-white'>
@@ -11,9 +17,9 @@ const footer = () => {
           <div className="container">
             <div className="row gy-3">
               <div className="col-xl-3">
-                <h3 className="tw-uppercase tw-text-2xl">repologic.com</h3>
+                <h3 className="tw-uppercase tw-text-2xl">{domain}</h3>
                 <div className="">
-                  Join our exclusive community of like minded people on repologic.com
+                  {title}
                 </div>
               </div>
               <div className="col-xl-3">
@@ -50,7 +56,7 @@ const footer = () => {
                     </Link>
                   </li>
                   <li>
-                    <a href="https://www.contrib.com/to/repologic.com" target='_blank' className='tw-no-underline text-secondary tw-inline-block tw-capitalize'>
+                    <a href={contri_link} target='_blank' className='tw-no-underline text-secondary tw-inline-block tw-capitalize'>
                       contribute
                     </a>
                   </li>
@@ -138,7 +144,7 @@ const footer = () => {
           <div className="container">
             <div className="row">
               <div className="col-xl-6">
-                &copy; 2023 <span className="tw-capitalize">repologic.com</span>. All Rights Reserved.
+                &copy; 2023 <span className="tw-capitalize">{domain}</span>. All Rights Reserved.
               </div>
               <div className="col-xl-6 lg:tw-text-right">
                 <ul className="mb-0 list-inline">
@@ -159,6 +165,7 @@ const footer = () => {
       </footer>
     </>
   )
+
 }
 
-export default footer
+

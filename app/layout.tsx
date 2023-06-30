@@ -1,10 +1,15 @@
 import './globals.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { getData } from '../lib/data';
 
 
-export const metadata = {
-  title: 'Welcome to Repologic.com',
-  description: 'repologic.com',
+export async function generateMetadata({ params, searchParams }, parent) {
+	const c = await getData();
+	
+	return {
+		title: c.data.title,
+		description: c.data.description,
+	}
 }
 
 export default function RootLayout({
