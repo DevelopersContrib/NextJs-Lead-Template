@@ -75,17 +75,19 @@ function LeadForm({domain, setSuccess}) {
     
     
 	const showStep = () => {
+        console.log(errors)
 		return(
 			<div className="">
                 <div className="input-group input-group-lg mb-3">
-                <input type="text" name="email" className="form-control" onChange={handleChange}  />
-                <button
-                className="btn btn-danger tw-px-[3rem!important]"
-                type="button"
-                onClick={handleSubmit}
-                >Submit</button>
+                    <input type="text" name="email" className="form-control" onChange={handleChange}  />
+                    <button
+                    className="btn btn-danger tw-px-[3rem!important]"
+                    type="button"
+                    onClick={handleSubmit}
+                    >Submit</button>
+                </div>
+                {errors.validate? (<ErrorBlock msg={errors.emailError} />): null}
             </div>
-        </div>
 		)
 	}
 
