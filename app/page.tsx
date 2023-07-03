@@ -1,4 +1,5 @@
-import Navigation from '../components/navigation';
+// import Navigation from '../components/navigation';
+import HeaderWidget from '../components/HeaderWidget';
 import Footer from '../components/footer';
 import TopDomainsComponent from '../components/TopDomainsComponent';
 import Logo from '../components/logo';
@@ -18,7 +19,8 @@ export default async function Home() {
   const follow_link = "https://www.contrib.com/signup/follow/"+domain;
   return (
     <>
-      <Navigation />
+      {/* <Navigation /> */}
+      <HeaderWidget domain={domain} />
       <section
         style={{ backgroundImage: `url('${background}')` }}
         className="tw-min-h-[calc(100vh-40px)] tw-bg-cover tw-bg-no-repeat tw-relative tw-text-white tw-bg-[50%] tw-py-12 tw-flex tw-w-full tw-items-center"
