@@ -3,6 +3,7 @@ import Footer from '../components/footer';
 import TopDomainsComponent from '../components/TopDomainsComponent';
 import Logo from '../components/logo';
 import Image from 'next/image';
+import Container from '../components/Container';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUsers, faUserCog, faCogs, faGlobe, faCircleNotch } from '@fortawesome/free-solid-svg-icons';
 import { getData, getDomain } from '../lib/data';
@@ -35,27 +36,7 @@ export default async function Home() {
               <div className="row">
                 <div className="col-xl-8 offset-xl-2">
                   <div className="tw-bg-[rgba(0,0,0,0.75)] tw-p-8 tw-rounded-lg">
-                    {/* Start:: Forms */}
-                    <div className="">
-                      <div className="input-group input-group-lg mb-3">
-                        <input type="text" className="form-control" placeholder="Email address..." />
-                        <button
-                          className="btn btn-danger tw-px-[3rem!important]"
-                          type="button"
-                        >Submit</button>
-                      </div>
-                    </div>
-                    {/* Start:: Thank you message */}
-                    <div className='text-center tw-hidden'>
-                      <FontAwesomeIcon icon={faCircleNotch} spin className='tw-w-8 tw-h-[2rem!important]' />
-                      <h3>Thanks, your spot is reserved!</h3>
-                      <p>
-                        Share {domain} with you friends to move up in line and reserve your username.
-                      </p>
-                      <div className="mb-3">
-                        <a href={follow_link} className="btn btn-warning">Continue to Follow {domain} Brand</a>
-                      </div>
-                    </div>
+                  <Container domain={domain}/>
                     <p className="text-center mb-0 small text-secondary">
                     {description}
                     </p>
