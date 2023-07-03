@@ -1,9 +1,11 @@
 import Script from "next/script"
 const page = () => {
-  const domain = 'repologic.com'
+  const config = {
+    DOMAIN: process.env.NEXT_PUBLIC_VERCEL_URL
+  }
   return (
     <>
-      <Script src={"https://tools.contrib.com/pages/privacy?d="+domain+"&container=privacy-script"} />
+      <Script src={"https://tools.contrib.com/pages/privacy?d="+config.DOMAIN+"&container=privacy-script"} />
       <div className="privacy-script"></div>
     </>
   )
