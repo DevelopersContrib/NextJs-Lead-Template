@@ -85,4 +85,6 @@ h6,.h6{
 }
 .swiper-slide img {
   width: 285px;
+  height: 100px;
+  object-fit: contain;
 }

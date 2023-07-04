@@ -2,20 +2,20 @@
 import { useEffect } from "react";
 
 const FooterWidget = ({ footerHtml }) => {
-  const beforeYouGoTemplate = `<div id="beforeyougo" style="display:none;" className="glue_popup glue_container">
-                            <div className="glue_close" onclick="$.glue_close()">X</div>
-                            <div className="glue_content">
-                              <div className="wrap-exit-content text-center">
-                                <img className="logo-exit-ctb" src="https://s3.amazonaws.com/assets.zipsite.net/images/jayson/icons/currency-ctb-4.png" alt="">
-                                <h1 className="bg-ttle-exit"> Hello!</h1>
-                                <p> We invite you to our First Movers Opportunity with our <br>CTB crypto token sale starting <b className="text-danger">October 12, 2017</b>. <br>Amazing Opportunities with world leading digital assets like Streaming.com, Applications.com and others. Learn more and get updates. <br>
+  const beforeYouGoTemplate = `<div id="beforeyougo" style="display:none;" class="glue_popup glue_container">
+                            <div class="glue_close" onclick="$.glue_close()">X</div>
+                            <div class="glue_content">
+                              <div class="wrap-exit-content text-center">
+                                <img class="logo-exit-ctb" src="https://s3.amazonaws.com/assets.zipsite.net/images/jayson/icons/currency-ctb-4.png" alt="">
+                                <h1 class="bg-ttle-exit"> Hello!</h1>
+                                <p> We invite you to our First Movers Opportunity with our <br>CTB crypto token sale starting <b class="text-danger">October 12, 2017</b>. <br>Amazing Opportunities with world leading digital assets like Streaming.com, Applications.com and others. Learn more and get updates. <br>
                                 </p>
                                 <p>
-                                  <a href="https://goo.gl/mEv13v" className="btn btn-lg btn-warning" target="_blank">
-                                    <i className="fa fa-check"></i> Get Started </a>
+                                  <a href="https://goo.gl/mEv13v" class="btn btn-lg btn-warning" target="_blank">
+                                    <i class="fa fa-check"></i> Get Started </a>
                                 </p>
                                 <p>
-                                  <a href="javascript:;" onclick="$.glue_close()" className="help-block">
+                                  <a href="javascript:;" onclick="$.glue_close()" class="help-block">
                                     <small>No, thanks I am not interested to be part owner.</small>
                                   </a>
                                 </p>
