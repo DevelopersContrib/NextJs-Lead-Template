@@ -1,6 +1,6 @@
-// import Navigation from '../components/navigation';
 import HeaderWidget from '../components/HeaderWidget';
-import Footer from '../components/footer';
+import FooterWidget from '../components/FooterWidget';
+import Footer from '../components/Footer';
 import TopDomainsComponent from '../components/TopDomainsComponent';
 import Logo from '../components/logo';
 import Image from 'next/image';
@@ -18,6 +18,7 @@ export default async function Home() {
   const description = c.data.description;
   const title = c.data.title;
   const follow_link = "https://www.contrib.com/signup/follow/"+domain;
+  const footerHtml = c.data.footer_html ? c.data.footer_html : c.data.footer_html_DefaultValue 
 
   return (
     <>
@@ -206,6 +207,7 @@ export default async function Home() {
           </div>
         </div>
       </section>
+      <FooterWidget footerHtml={footerHtml} />
       <Footer />
     </>
   )

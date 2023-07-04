@@ -7,8 +7,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 // import required modules
 import { Pagination } from "swiper";
-import { useEffect } from "react";
-// import {  getTopsites } from '../lib/data';
+import LoadingState from "./LoadingState";
 
 const TopDomainsComponent = ({ domains }) => {
   return (
@@ -40,7 +39,7 @@ const TopDomainsComponent = ({ domains }) => {
               modules={[Pagination]}
               className="mySwiper"
             >
-              {!domains && "loading"}
+              {!domains && <LoadingState />}
               {domains.data.domains.map((domain) => (
                 <SwiperSlide
                   className="tw-px-4 tw-py-12 tw-rounded-md"
