@@ -17,3 +17,17 @@ export async function getData() {
 }
 
 
+export async function getTopsites() {
+  const url = `https://api1.contrib.co/v2/domains/getTopsites?key=5c1bde69a9e783c7edc2e603d8b25023&domain=${DOMAIN}`
+  const res = await fetch(url)
+  
+  if (!res.ok) {
+    // This will activate the closest `error.js` Error Boundary
+    throw new Error('Failed to fetch data')
+  }
+  
+  return res.json()
+}
+
+
+
