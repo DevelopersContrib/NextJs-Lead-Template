@@ -7,12 +7,13 @@ import Image from 'next/image';
 import Container from '../components/Container';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUsers, faUserCog, faCogs, faGlobe, faCircleNotch } from '@fortawesome/free-solid-svg-icons';
-import { getData, getDomain } from '../lib/data';
+import { getData, getDomain, getTopsites } from '../lib/data';
 
 
 export default async function Home() {
   const c = await getData();
   const domain = await getDomain();
+  const topDomains = await getTopsites();
   const background = c.data.background_url!==null?c.data.background_url:'https://cdn.vnoc.com/background/tech4.jpg';
   const description = c.data.description;
   const title = c.data.title;
@@ -135,7 +136,7 @@ export default async function Home() {
           </div>
         </div>
       </section>
-      <TopDomainsComponent />
+      <TopDomainsComponent domains={topDomains} />
       <section className="tw-py-24 bg-light">
         <div className="container">
           <div className="row mb-3">
