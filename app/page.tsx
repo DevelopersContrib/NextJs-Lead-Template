@@ -17,6 +17,7 @@ export default async function Home() {
   const description = c.data.description;
   const title = c.data.title;
   const follow_link = "https://www.contrib.com/signup/follow/"+domain;
+
   return (
     <>
       {/* <Navigation /> */}

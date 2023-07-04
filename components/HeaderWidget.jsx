@@ -13,7 +13,6 @@ const HeaderWidget = ({ domain, piwikId, accountGA, adsenseClientId }) => {
   };
 
   const piwikScript = () => {
-    console.log(piwikId, "im here piwik");
     let script = document.createElement("script");
     script.async = true;
 
@@ -33,7 +32,6 @@ const HeaderWidget = ({ domain, piwikId, accountGA, adsenseClientId }) => {
   };
 
   const adsenseScript = () => {
-    console.log(adsenseClientId, "im here adsenseClientId");
     let script = document.createElement("script");
 
     script.src = `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseClientId}`;
@@ -43,7 +41,6 @@ const HeaderWidget = ({ domain, piwikId, accountGA, adsenseClientId }) => {
   };
 
   const googleAnalyticsScript = () => {
-    console.log(accountGA, "im here accountGA");
     let script = document.createElement("script");
     let scriptCode = document.createElement("script");
 
