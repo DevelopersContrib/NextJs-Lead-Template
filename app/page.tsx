@@ -20,7 +20,7 @@ export default async function Home() {
   return (
     <>
       {/* <Navigation /> */}
-      <HeaderWidget domain={domain} />
+      <HeaderWidget domain={domain} piwikId={c.data.piwikId} accountGA={c.data.accountGA} adsenseClientId={c.data.adsenseClientId}  />
       <section
         style={{ backgroundImage: `url('${background}')` }}
         className="tw-min-h-[calc(100vh-40px)] tw-bg-cover tw-bg-no-repeat tw-relative tw-text-white tw-bg-[50%] tw-py-12 tw-flex tw-w-full tw-items-center"

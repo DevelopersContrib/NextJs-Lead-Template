@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { getData } from '../lib/data';
 
 
-export async function generateMetadata({ params, searchParams }, parent) {
+export async function generateMetadatat() {
 	const c = await getData();
 	
 	return {
