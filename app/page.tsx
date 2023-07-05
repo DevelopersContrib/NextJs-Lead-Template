@@ -2,6 +2,7 @@ import HeaderWidget from '../components/HeaderWidget';
 import FooterWidget from '../components/FooterWidget';
 import Footer from '../components/Footer';
 import TopDomainsComponent from '../components/TopDomainsComponent';
+import Ai from '../components/Ai';
 import Logo from '../components/logo';
 import Image from 'next/image';
 import Container from '../components/Container';
@@ -207,6 +208,7 @@ export default async function Home() {
           </div>
         </div>
       </section>
+      <Ai />
       <FooterWidget footerHtml={footerHtml} />
       <Footer />
     </>
