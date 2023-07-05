@@ -15,7 +15,7 @@ export default async function Home() {
   const c = await getData();
   const domain = getDomain();
   const topDomains = await getTopsites();
-  const background = c.data.background_url!==null?c.data.background_url:'https://cdn.vnoc.com/background/tech4.jpg';
+  const background = c.data.background_url!==undefined && c.data.background_url!==null?c.data.background_url:'https://cdn.vnoc.com/background/tech4.jpg';
   const description = c.data.description;
   const title = c.data.title;
   const follow_link = "https://www.contrib.com/signup/follow/"+domain;
