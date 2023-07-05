@@ -11,6 +11,7 @@ import { faUsers, faUserCog, faCogs, faGlobe, faCircleNotch } from '@fortawesome
 import { getData, getDomain, getTopsites, getScript } from '../lib/data';
 
 
+
 export default async function Home() {
   const c = await getData();
   const domain = getDomain();
@@ -21,7 +22,7 @@ export default async function Home() {
   const follow_link = "https://www.contrib.com/signup/follow/"+domain;
   const html = await getScript("https://e7lq80c199.execute-api.us-west-2.amazonaws.com/api1?key=5c1bde69a9e783c7edc2e603d8b25023&request=getcontent&url=" + encodeURIComponent(domain))
 
-  console.log('domain',domain)
+  console.log('html: ',html)
 
   return (
     <>
