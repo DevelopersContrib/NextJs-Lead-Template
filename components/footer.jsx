@@ -96,7 +96,7 @@ export default async function Footer() {
                 <h3 className="tw-uppercase tw-text-2xl">PARTNERS</h3>
                 <ul className="list-unstyled">
                   <li>
-                    <a href="#" className='tw-no-underline text-secondary tw-inline-block'>
+                    <a href="https://contrib.com" className='tw-no-underline text-secondary tw-inline-block'>
                       <Image
                         src="https://cdn.vnoc.com/logos/logo-new-contrib-06-wyt.png"
                         alt='contrib.com'
@@ -107,7 +107,7 @@ export default async function Footer() {
                     </a>
                   </li>
                   <li>
-                    <a href="#" className='tw-no-underline text-secondary tw-inline-block'>
+                    <a href="https://realtydao.com" className='tw-no-underline text-secondary tw-inline-block'>
                       <Image
                         src="https://cdn.vnoc.com/logos/logo-RealtyDAO-light-1.png"
                         alt='realtydao.com'
@@ -144,7 +144,7 @@ export default async function Footer() {
           <div className="container">
             <div className="row">
               <div className="col-xl-6">
-                &copy; 2023 <span className="tw-capitalize">{domain}</span>. All Rights Reserved.
+              &copy; {new Date().getFullYear()} <span className="tw-capitalize">{domain}</span>. All Rights Reserved.
               </div>
               <div className="col-xl-6 lg:tw-text-right">
                 <ul className="mb-0 list-inline">
