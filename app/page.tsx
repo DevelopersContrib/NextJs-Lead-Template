@@ -1,6 +1,6 @@
 import HeaderWidget from '../components/HeaderWidget';
 import ScriptLoader from '../components/ScriptLoader';
-import Footer from '../components/Footer';
+import Footer from '../components/footer';
 import TopDomainsComponent from '../components/TopDomainsComponent';
 import Ai from '../components/Ai';
 import Logo from '../components/logo';
