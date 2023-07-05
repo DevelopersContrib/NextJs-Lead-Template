@@ -19,9 +19,7 @@ export default async function Home() {
   const description = c.data.description;
   const title = c.data.title;
   const follow_link = "https://www.contrib.com/signup/follow/"+domain;
-  const html = await getScript("https://e7lq80c199.execute-api.us-west-2.amazonaws.com/api1?key=5c1bde69a9e783c7edc2e603d8b25023&request=getcontent&url=" + encodeURIComponent(domain))
-
-  console.log('domain',domain)
+  const html = await getScript("https://e7lq80c199.execute-api.us-west-2.amazonaws.com/api1?key=5c1bde69a9e783c7edc2e603d8b25023&request=getcontent&url=" + domain)
 
   return (
     <>
