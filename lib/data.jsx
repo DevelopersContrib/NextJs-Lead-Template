@@ -1,7 +1,11 @@
+import { headers } from 'next/headers'
 let DOMAIN = process.env.NEXT_PUBLIC_VERCEL_URL;
 
 export function getDomain() {
-  return DOMAIN
+  const headersList = headers()
+  const referrer = headersList.get('host')
+  const domainName = referrer.includes("localhost") ? DOMAIN : referrer
+  return domainName 
 }
 
 export async function getData() {
