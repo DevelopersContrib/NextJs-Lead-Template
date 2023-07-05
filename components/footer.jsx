@@ -9,6 +9,9 @@ export default async function Footer() {
   const domain = await getDomain();
   const data = await getData();
   const title = data.data.title;
+  const twitter_url = data.data.twitter;
+  const fb_url = data.data.fb;
+  const linkedin_url = data.data.linkedin;
   const contri_link = 'https://www.contrib.com/to/'+domain;
   return (
     <>
@@ -121,17 +124,17 @@ export default async function Footer() {
                 <h3 className="tw-uppercase tw-text-2xl">socials</h3>
                 <ul className="list-inline">
                   <li className="list-inline-item">
-                    <a href="#" className='tw-no-underline text-secondary tw-inline-block'>
+                    <a href={twitter_url} className='tw-no-underline text-secondary tw-inline-block'>
                       <FontAwesomeIcon icon={faTwitter} className="tw-w-8 tw-h-[2rem!important] text-secondary" />
                     </a>
                   </li>
                   <li className="list-inline-item">
-                    <a href="#" className='tw-no-underline text-secondary tw-inline-block'>
+                    <a href={fb_url} className='tw-no-underline text-secondary tw-inline-block'>
                       <FontAwesomeIcon icon={faFacebookF} className="tw-w-8 tw-h-[2rem!important] text-secondary" />
                     </a>
                   </li>
                   <li className="list-inline-item">
-                    <a href="#" className='tw-no-underline text-secondary tw-inline-block'>
+                    <a href={linkedin_url} className='tw-no-underline text-secondary tw-inline-block'>
                       <FontAwesomeIcon icon={faLinkedinIn} className="tw-w-8 tw-h-[2rem!important] text-secondary" />
                     </a>
                   </li>
