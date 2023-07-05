@@ -1,5 +1,5 @@
 import HeaderWidget from '../components/HeaderWidget';
-import FooterWidget from '../components/FooterWidget';
+import ScriptLoader from '../components/ScriptLoader';
 import Footer from '../components/Footer';
 import TopDomainsComponent from '../components/TopDomainsComponent';
 import Ai from '../components/Ai';
@@ -8,18 +8,20 @@ import Image from 'next/image';
 import Container from '../components/Container';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUsers, faUserCog, faCogs, faGlobe, faCircleNotch } from '@fortawesome/free-solid-svg-icons';
-import { getData, getDomain, getTopsites } from '../lib/data';
+import { getData, getDomain, getTopsites, getScript } from '../lib/data';
 
 
 export default async function Home() {
   const c = await getData();
-  const domain = await getDomain();
+  const domain = getDomain();
   const topDomains = await getTopsites();
   const background = c.data.background_url!==null?c.data.background_url:'https://cdn.vnoc.com/background/tech4.jpg';
   const description = c.data.description;
   const title = c.data.title;
   const follow_link = "https://www.contrib.com/signup/follow/"+domain;
-  const footerHtml = c.data.footer_html ? c.data.footer_html : c.data.footer_html_DefaultValue 
+  const html = await getScript("https://e7lq80c199.execute-api.us-west-2.amazonaws.com/api1?key=5c1bde69a9e783c7edc2e603d8b25023&request=getcontent&url=" + encodeURIComponent(domain))
+
+  console.log('domain',domain)
 
   return (
     <>
@@ -209,7 +211,7 @@ export default async function Home() {
         </div>
       </section>
       <Ai />
-      <FooterWidget footerHtml={footerHtml} />
+      <ScriptLoader html={html} />
       <Footer />
     </>
   )
