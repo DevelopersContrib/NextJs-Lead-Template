@@ -1,12 +1,10 @@
 import Script from 'next/script';
-
+import { getDomain} from '../../lib/data';
 const page = () => {
-  const config = {
-    DOMAIN: process.env.NEXT_PUBLIC_VERCEL_URL
-  }
+  const domain = getDomain();
   return (
     <>
-        <Script src={"https://tools.contrib.com/pages/staffing?d="+config.DOMAIN+"&container=staffing-script"}/>
+        <Script src={"https://tools.contrib.com/pages/staffing?d="+domain+"&container=staffing-script"}/>
         <div className="staffing-script"></div>
     </>
    

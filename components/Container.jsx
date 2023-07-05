@@ -11,7 +11,7 @@ const [success, setSuccess] = useState(false);
   return (
     <>
     
-    {success ? <Thanku />: <Form domain={domain} setSuccess={setSuccess}/>}
+    {success ? <Thanku domain={domain} />: <Form domain={domain} setSuccess={setSuccess}/>}
   
   </>
   )

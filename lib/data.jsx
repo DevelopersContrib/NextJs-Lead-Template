@@ -4,7 +4,7 @@ let DOMAIN = process.env.NEXT_PUBLIC_VERCEL_URL;
 export function getDomain() {
   const headersList = headers()
   const referrer = headersList.get('host')
-  const domainName = referrer.includes("localhost") ? DOMAIN : referrer
+  const domainName = referrer.includes("localhost") ? DOMAIN : referrer.replace("www.", "");
   return domainName 
 }
 

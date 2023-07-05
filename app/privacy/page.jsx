@@ -1,11 +1,10 @@
 import Script from "next/script"
+import { getDomain} from '../../lib/data';
 const page = () => {
-  const config = {
-    DOMAIN: process.env.NEXT_PUBLIC_VERCEL_URL
-  }
+  const domain = getDomain();
   return (
     <>
-      <Script src={"https://tools.contrib.com/pages/privacy?d="+config.DOMAIN+"&container=privacy-script"} />
+      <Script src={"https://tools.contrib.com/pages/privacy?d="+domain+"&container=privacy-script"} />
       <div className="privacy-script"></div>
     </>
   )
