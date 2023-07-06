@@ -22,9 +22,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <head>
-        <Script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js" />
-      </head>
       <body>{children}</body>
     </html>
   )
