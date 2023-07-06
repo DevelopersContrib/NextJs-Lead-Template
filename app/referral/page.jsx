@@ -1,13 +1,13 @@
 
-import Script from 'next/script';
+import ScriptLoader from '../../components/ScriptLoader'
+
 
 const page = () => {
   
+  const html = "<script id='referral-script' src='https://www.referrals.com/extension/widget.js?key=356' type='text/javascript'></script>";
   return (
     <>
-      {/* <Script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js" /> */}
-      {/* <Script src="https://www.referrals.com/extension/widget.js?key=356" /> */}
-      referral widget
+      <ScriptLoader html={html} />
     </>
 
   )
