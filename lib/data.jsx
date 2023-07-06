@@ -13,7 +13,7 @@ export function getDomain() {
 
 export async function getData() {
   const domain = getDomain();
-  const url = `https://api1.contrib.co/v2/domains/getdomainconfig?key=5c1bde69a9e783c7edc2e603d8b25023&domain=${domain}`;
+  const url = process.env.CONTRIB_API1+`&domain=${domain}`
   const res = await fetch(url);
   if (!res.ok) {
     // This will activate the closest `error.js` Error Boundary
