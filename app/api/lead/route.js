@@ -8,8 +8,15 @@ export const POST = async (request) => {
 		const params = new URLSearchParams();
 			params.append('domain', data.domain);
 			params.append('email', data.email);
+			params.append('secret',data.domain+data.email);
+			//console.log('params are:');
+
+			
 			const saveLeads = await axios.post('https://www.contrib.com/forms/saveleads', params);
-			console.log(saveLeads)
+			//console.log(saveLeads)
+			//console.log('lead submit return is');
+			//console.log(saveLeads.data);
+			
 			if(saveLeads.data.success){
 				return new Response(JSON.stringify({status:true, lead:saveLeads.data, email:data.email}), { status: 201 })
 			}else{

@@ -3,7 +3,7 @@ import { getData } from '../lib/data';
 
 export default async function Logo() {
   const c = await getData();
-  if(c.data.logo!=null){
+  if(c.data.logo!=null && c.data.logo!=''){
     return (
         <Image 
               src={c.data.logo}
