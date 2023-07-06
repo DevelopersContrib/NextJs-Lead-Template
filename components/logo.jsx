@@ -15,7 +15,7 @@ export default async function Logo() {
     )
   }else{
     return(
-        <h1 className="tw-text-5xl font-800">{c.data.domainName}</h1>
+        <h1 className="tw-text-5xl font-800 tw-capitalize">{c.data.domainName}</h1>
     )
   }
 }
