@@ -18,6 +18,9 @@ export default async function Home() {
   const background = c.data.background_url!==undefined && c.data.background_url!==null?c.data.background_url:'https://cdn.vnoc.com/background/tech4.jpg';
   const description = c.data.description;
   const title = c.data.title;
+  const twitter_url = c.data.twitter;
+  const fb_url = c.data.fb;
+  const linkedin_url = c.data.linkedin;
   const follow_link = "https://www.contrib.com/signup/follow/"+domain;
   const html = await getScript("https://e7lq80c199.execute-api.us-west-2.amazonaws.com/api1?key=5c1bde69a9e783c7edc2e603d8b25023&request=getcontent&url=" + domain)
 
@@ -33,7 +36,7 @@ export default async function Home() {
         <div className="container tw-relative">
           <div className="row tw-mb-8">
             <div className="col-xl-12 tw-text-center">
-            <Logo />
+            <Logo domain={domain} logo={c.data.logo}/>
               <h5 className='tw-font-semibold text-capitalize mb-3'>
                 {title}
               </h5>
@@ -210,7 +213,7 @@ export default async function Home() {
       </section>
       <Ai />
       <ScriptLoader html={html} />
-      <Footer />
+      <Footer domain={domain} twitter_url={twitter_url} fb_url={twitter_url} linkedin_url={linkedin_url}/>
     </>
   )
 }

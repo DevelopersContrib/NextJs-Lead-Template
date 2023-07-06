@@ -1,12 +1,10 @@
 import Image from 'next/image'
-import { getData } from '../lib/data';
 
-export default async function Logo() {
-  const c = await getData();
-  if(c.data.logo!=null && c.data.logo!=''){
+export default function Logo({domain,logo}) {
+  if(logo!=null && logo!=''){
     return (
         <Image 
-              src={c.data.logo}
+              src={logo}
               width={300}
               height={300}
               alt=""
@@ -15,7 +13,7 @@ export default async function Logo() {
     )
   }else{
     return(
-        <h1 className="tw-text-5xl font-800 tw-capitalize">{c.data.domainName}</h1>
+        <h1 className="tw-text-5xl font-800 tw-capitalize">{domain}</h1>
     )
   }
 }

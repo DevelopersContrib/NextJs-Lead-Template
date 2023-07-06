@@ -1,8 +1,7 @@
 import Script from "next/script";
-import {  getDomain } from '../lib/data';
 
-export default async function Navigation() {
-  const domain = await getDomain();
+
+export default function Navigation({domain}) {
   const link = 'https://domaindirectory.com/servicepage/?domain='+domain;
   return (
     

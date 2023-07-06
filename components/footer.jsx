@@ -3,15 +3,9 @@ import { faTwitter, faFacebookF, faLinkedinIn } from '@fortawesome/free-brands-s
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import Image from 'next/image';
 import Link from 'next/link';
-import {  getData, getDomain } from '../lib/data';
 
-export default async function Footer() {
-  const domain = await getDomain();
-  const data = await getData();
-  const title = data.data.title;
-  const twitter_url = data.data.twitter;
-  const fb_url = data.data.fb;
-  const linkedin_url = data.data.linkedin;
+export default function Footer({domain,twitter_url,fb_url,linkedin_url}) {
+  
   const contri_link = 'https://www.contrib.com/to/'+domain;
   return (
     <>
@@ -22,7 +16,7 @@ export default async function Footer() {
               <div className="col-xl-3">
                 <h3 className="tw-uppercase tw-text-2xl">{domain}</h3>
                 <div className="">
-                  {title}
+                is a proud venture of Global Ventures,LLC.Join our network of performance based companies using {domain}.
                 </div>
               </div>
               <div className="col-xl-3">
