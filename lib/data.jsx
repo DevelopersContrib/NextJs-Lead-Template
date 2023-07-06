@@ -25,7 +25,7 @@ export async function getData() {
 
 export async function getTopsites() {
   const domain = getDomain();
-  const url = `https://api1.contrib.co/v2/domains/getTopsites?key=5c1bde69a9e783c7edc2e603d8b25023&domain=${domain}`;
+  const url = process.env.CONTRIB_API1_TOPSITES+`&domain=${domain}`
   const res = await fetch(url);
 
   if (!res.ok) {

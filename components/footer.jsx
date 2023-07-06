@@ -7,6 +7,7 @@ import Link from 'next/link';
 export default function Footer({domain,twitter_url,fb_url,linkedin_url}) {
   
   const contri_link = 'https://www.contrib.com/to/'+domain;
+  const footer_text = 'is a proud venture of Global Ventures,LLC.Join our network of performance based companies using '+domain+'.';
   return (
     <>
       <footer className='tw-text-white'>
@@ -15,8 +16,8 @@ export default function Footer({domain,twitter_url,fb_url,linkedin_url}) {
             <div className="row gy-3">
               <div className="col-xl-3">
                 <h3 className="tw-uppercase tw-text-2xl">{domain}</h3>
-                <div className="">
-                is a proud venture of Global Ventures,LLC.Join our network of performance based companies using {domain}.
+                <div className="tw-no-underline text-secondary tw-inline-block">
+                {footer_text}
                 </div>
               </div>
               <div className="col-xl-3">
