@@ -213,7 +213,7 @@ export default async function Home() {
       </section>
       <Ai />
       <ScriptLoader html={html} />
-      <Footer domain={domain} twitter_url={twitter_url} fb_url={twitter_url} linkedin_url={linkedin_url}/>
+      <Footer domain={domain} twitter_url={twitter_url} fb_url={fb_url} linkedin_url={linkedin_url}/>
     </>
   )
 }
