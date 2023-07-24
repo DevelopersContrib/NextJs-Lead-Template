@@ -6,8 +6,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheck} from '@fortawesome/free-solid-svg-icons'
 import LoadingState from './LoadingState';
 import ErrorBlock from './ErrorBlock';
+import { removeSpecialCharacters } from '../lib/utils';
 
-function LeadForm({domain, setSuccess}) {
+function LeadForm({domain, setSuccess, setReferralData}) {
 	const initialValues = {
 		isLoading:false,
 		domain:domain,
@@ -58,6 +59,13 @@ function LeadForm({domain, setSuccess}) {
           const res = await response.json()
           
           if(res.status){
+			const emailReferral = data.email;
+			const emailSplit = emailReferral.split('@');
+			console.log(emailSplit);
+			const name = removeSpecialCharacters(emailSplit[0]);
+			console.log(name);
+
+			setReferralData({...data,['email']:emailReferral, ['name']: name})
             setSuccess(true);
             console.log('done....')
           }

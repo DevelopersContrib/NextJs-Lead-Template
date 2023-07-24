@@ -1,17 +1,22 @@
 "use client";
 
 import { useState} from "react";
-import Image from 'next/image'
 import Form from "./Form";
 import Thanku from "./Thanku";
 
 const Container = ({domain}) => {
-const [success, setSuccess] = useState(false);
+  const initialValues = {
+		email: "",
+    name: ""
+	}
+
+  const [referralData, setReferralData ] = useState(initialValues);
+  const [success, setSuccess] = useState(false);
   
   return (
     <>
     
-    {success ? <Thanku domain={domain} />: <Form domain={domain} setSuccess={setSuccess}/>}
+    {success ? <Thanku domain={domain} referralData={referralData}/>: <Form domain={domain} setSuccess={setSuccess} setReferralData={setReferralData}/>}
   
   </>
   )
