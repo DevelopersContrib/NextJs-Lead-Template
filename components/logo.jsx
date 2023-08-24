@@ -13,7 +13,7 @@ export default function Logo({domain,logo}) {
     )
   }else{
     return(
-        <h1 className="tw-text-5xl font-800 tw-capitalize">{domain}.</h1>
+        <h1 className="tw-text-5xl font-800 tw-capitalize">{domain}</h1>
     )
   }
 }
