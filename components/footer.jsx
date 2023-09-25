@@ -49,14 +49,29 @@ export default function Footer({domain,twitter_url,fb_url,linkedin_url}) {
                     </Link>
                   </li>
                   <li>
-                    <Link href="/invest" className='tw-no-underline text-secondary tw-inline-block tw-capitalize'>
+                    <a href={contri_link} target='_blank' className='tw-no-underline text-secondary tw-inline-block tw-capitalize'>
+                      contribute
+                    </a>
+                  </li>
+                  <li>
+                    <Link href={`https://domaindirectory.com/servicepage/?domain=${domain}`} className='tw-no-underline text-secondary tw-inline-block tw-capitalize'>
+                      Build
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href={`https://domaindirectory.com/servicepage/?domain=${domain}`} className='tw-no-underline text-secondary tw-inline-block tw-capitalize'>
                       invest
                     </Link>
                   </li>
                   <li>
-                    <a href={contri_link} target='_blank' className='tw-no-underline text-secondary tw-inline-block tw-capitalize'>
-                      contribute
-                    </a>
+                    <Link href={`https://domaindirectory.com/servicepage/?domain=${domain}`} className='tw-no-underline text-secondary tw-inline-block tw-capitalize'>
+                      manage
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href={`https://domaindirectory.com/servicepage/?domain=${domain}`} className='tw-no-underline text-secondary tw-inline-block tw-capitalize'>
+                      monetize
+                    </Link>
                   </li>
                 </ul>
               </div>
