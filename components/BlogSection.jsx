@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useState } from 'react';
-import Image from 'next/image';
+import { useEffect, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 
 const BlogSection = () => {
@@ -13,47 +13,46 @@ const BlogSection = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch("/api/blogs", { next: { revalidate: 3600 } });
+      const response = await fetch("/api/blogs", {
+        next: { revalidate: 3600 },
+      });
       if (response.ok) {
         const res = await response.json();
         setBlogs(res.blogs);
         setIsLoading(false);
       } else {
-        alert('An error occurred');
+        alert("An error occurred");
       }
     };
     fetchData();
   }, []);
 
- 
-
   return (
     <div className="container">
-     
-        <div className="row">
-          {blogPosts.map((post, index) => (
-            <a
-              className="col-md-4 mb-4"
-              key={index}
-              href={`/blog/${post.slug+'---'+post.id}`}
-              style={{ cursor: 'pointer', textDecoration: 'none' }}
-            >
-              <div className="card h-100">
-                <Image
-                  src={src + post.image_base64}
-                  alt={post.image_caption}
-                  width={300}
-                  height={200}
-                  className="card-img-top"
-                />
-                <div className="card-body p-4">
-                  <h5 className="card-title">{post.title}</h5>
-                </div>
+      <div className="row">
+        {blogPosts.map((post, index) => (
+          <a
+            className="col-md-4 mb-4"
+            key={index}
+            href={`/blog/${post.slug + "---" + post.id}`}
+            style={{ cursor: "pointer", textDecoration: "none" }}
+          >
+            <div className="card h-100">
+              <Image
+                src={src + post.image_base64}
+                alt={post.image_caption}
+                width={0}
+                height={0}
+                sizes="100vw"
+                className="card-img-top tw-w-[300px] tw-h-[200px] tw-object-cover"
+              />
+              <div className="card-body p-4">
+                <h5 className="card-title">{post.title}</h5>
               </div>
-            </a>
-          ))}
-        </div>
-      
+            </div>
+          </a>
+        ))}
+      </div>
     </div>
   );
 };
