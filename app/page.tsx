@@ -2,6 +2,7 @@ import HeaderWidget from '../components/HeaderWidget';
 import ScriptLoader from '../components/ScriptLoader';
 import Footer from '../components/footer';
 import TopDomainsComponent from '../components/TopDomainsComponent';
+import BlogSection from "@/components/BlogSection";
 import Ai from '../components/Ai';
 import Logo from '../components/logo';
 import Image from 'next/image';
@@ -142,6 +143,16 @@ export default async function Home() {
         </div>
       </section>
       <TopDomainsComponent domains={topDomains} />
+      <section className="tw-py-12">
+      <div className="container">
+        <div className="row">
+          <div className="col-xl-12">
+            <h2 className="tw-font-bold tw-text-3xl mb-4">Latest Blogs</h2>
+          </div>
+        </div>
+      </div>
+      <BlogSection/>
+      </section>
       <section className="tw-py-24 bg-light">
         <div className="container">
           <div className="row mb-3">
