@@ -144,13 +144,7 @@ export default async function Home() {
       </section>
       <TopDomainsComponent domains={topDomains} />
       <section className="tw-py-12">
-      <div className="container">
-        <div className="row">
-          <div className="col-xl-12">
-            <h2 className="tw-font-bold tw-text-3xl mb-4">Latest Blogs</h2>
-          </div>
-        </div>
-      </div>
+      
       <BlogSection/>
       </section>
       <section className="tw-py-24 bg-light">
