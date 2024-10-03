@@ -34,9 +34,9 @@ export default function Footer({domain,twitter_url,fb_url,linkedin_url}) {
                     </Link>
                   </li>
                   <li>
-                    <Link href="/referral" className='tw-no-underline text-secondary tw-inline-block tw-capitalize'>
+                    <a href="/referral" className='tw-no-underline text-secondary tw-inline-block tw-capitalize'>
                       referral
-                    </Link>
+                    </a>
                   </li>
                   <li>
                     <Link href="/apps" className='tw-no-underline text-secondary tw-inline-block tw-capitalize'>
