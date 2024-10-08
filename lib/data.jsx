@@ -49,7 +49,7 @@ export async function getScript(url) {
 export async function getBlogs() {
   const domain = getDomain();
   const url = process.env.GET_BLOGS+`&domain=${domain}`
-  const res = await fetch(url, { next: { revalidate: 3600 } });
+  const res = await fetch(url, { next: { revalidate: 0 } });
  
   
   if (!res.ok){
