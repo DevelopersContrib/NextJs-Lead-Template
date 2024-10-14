@@ -43,7 +43,7 @@ const BlogDetails = async ({ params }) => {
           adsenseClientId={c.data.adsenseClientId}
         />
         <section className="tw-min-h-screen tw-py-16">
-          <div className="container ">
+          <div className="container animate_top mb-10 rounded-md border border-stroke bg-white p-3.5 shadow-solid-13 dark:border-strokedark dark:bg-blacksection">
             <div
               dangerouslySetInnerHTML={{ __html: post.content }}
               className="custom-blog-content"
