@@ -1,6 +1,6 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTwitter, faFacebookF, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
 import '@fortawesome/fontawesome-svg-core/styles.css';
+import { faFacebookF, faLinkedinIn, faTwitter } from '@fortawesome/free-brands-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -23,6 +23,11 @@ export default function Footer({domain,twitter_url,fb_url,linkedin_url}) {
               <div className="col-xl-3">
                 <h3 className="tw-uppercase tw-text-2xl">get started</h3>
                 <ul className="list-unstyled">
+                  <li>
+                    <Link href="/blog" className='tw-no-underline text-secondary tw-inline-block tw-capitalize'>
+                      blog
+                    </Link>
+                  </li>
                   <li>
                     <Link href="/partner" className='tw-no-underline text-secondary tw-inline-block tw-capitalize'>
                       partner with us
