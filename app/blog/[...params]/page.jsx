@@ -1,0 +1,41 @@
+import HeaderWidget from "@/components/HeaderWidget";
+import Footer from "@/components/footer";
+import { getBlogPostById } from "@/sanity/sanity-utils";
+import { getData, getDomain } from "@/lib/data";
+const BlogPost = async ({ params }) => {
+  const [id, slug] = params.params;
+  const domain = getDomain();
+  const c = await getData();
+  const post = await getBlogPostById(id, domain);
+  const twitter_url = c.data.twitter;
+  const fb_url = c.data.fb;
+  const linkedin_url = c.data.linkedin;
+  if (post) {
+    return (
+      <>
+        <HeaderWidget
+          domain={domain}
+          piwikId={c.data.piwikId}
+          accountGA={c.data.accountGA}
+          adsenseClientId={c.data.adsenseClientId}
+        />
+        <section className="tw-min-h-screen tw-py-16">
+          <div className="container animate_top mb-10 rounded-md border border-stroke bg-white p-3.5 shadow-solid-13 dark:border-strokedark dark:bg-blacksection">
+            <div
+              dangerouslySetInnerHTML={{ __html: post.content }}
+              className="custom-blog-content"
+            />
+          </div>
+        </section>
+        <Footer
+          domain={domain}
+          twitter_url={twitter_url}
+          fb_url={fb_url}
+          linkedin_url={linkedin_url}
+        />
+      </>
+    );
+  }
+};
+
+export default BlogPost;

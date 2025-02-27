@@ -1,9 +1,8 @@
 "use client";
 import Image from "next/image";
+import { useBlogStore } from "@/lib/store/useBlogStore";
+import { useFetchBlog } from "@/lib/hooks/useBlogFetcher";
 
-import { useEffect, useState } from "react";
-
-// Define the type for blog posts
 interface BlogPost {
   id: string;
   slug: string;
@@ -13,28 +12,8 @@ interface BlogPost {
 }
 
 const BlogList = () => {
-  const [blogPosts, setBlogs] = useState<BlogPost[]>([]);
-
-  const src = "data:image/jpeg;base64,";
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch("/api/blogs", {
-          next: { revalidate: 0 }
-        });
-        if (response.ok) {
-          const res = await response.json();
-          setBlogs(res.blogs);
-        } else {
-          alert("An error occurred");
-        }
-      } catch (error) {
-        console.error("Error fetching blogs:", error);
-      }
-    };
-    fetchData();
-  }, []);
+  const { blog } = useBlogStore();
+  useFetchBlog();
   return (
     <>
       <section className="tw-py-24">
@@ -43,12 +22,12 @@ const BlogList = () => {
             <div className="col-xl-12">
               <h2 className="tw-font-bold tw-text-3xl mb-4">Latest Blogs</h2>
             </div>
-            {blogPosts.length > 0
-              ? blogPosts.map((post, index) => (
+            {blog.length > 0
+              ? blog.map((post: BlogPost, index: number) => (
                   <a
                     className="col-md-4 mb-4"
                     key={index}
-                    href={`/blog/${post.slug + "---" + post.id}`}
+                    href={`/blog/${post.id}/${post.slug}`}
                     style={{ cursor: "pointer", textDecoration: "none" }}
                   >
                     <div className="card h-100">
