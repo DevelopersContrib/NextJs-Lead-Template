@@ -10,10 +10,33 @@ interface BlogPost {
   image_url: string;
   image_caption: string;
 }
+type content = {
+  title: string;
+  imageUrl: string;
+  blogPostTags: string[];
+  imageCaption: string;
+  blogPostContent: string;
+};
+type blogResponse = {
+  id: number;
+  type: string;
+  contents: content[];
+  createdAt: string;
+  updatedAt: string;
+  jobId: string;
+};
 
 const BlogList = () => {
   const { blog } = useBlogStore();
   useFetchBlog();
+
+  const blogPost = blog.map((item: blogResponse) => ({
+    id: item.id,
+    slug: item.contents[0].title,
+    title: item.contents[0].title,
+    image_url: item.contents[0].imageUrl,
+    image_caption: item.contents[0].imageCaption,
+  }));
   return (
     <>
       <section className="tw-py-24">
@@ -23,7 +46,7 @@ const BlogList = () => {
               <h2 className="tw-font-bold tw-text-3xl mb-4">Latest Blogs</h2>
             </div>
             {blog.length > 0
-              ? blog.map((post: BlogPost, index: number) => (
+              ? blogPost.map((post: BlogPost, index: number) => (
                   <a
                     className="col-md-4 mb-4"
                     key={index}
