@@ -52,58 +52,6 @@ const BlogList = () => {
     image_caption: item.contents[0].imageCaption,
   }));
 
-  const truncateText = (text: string, maxLength = 55): string => {
-    if (!text) return "";
-    if (text.length <= maxLength) return text;
-    return text.substring(0, maxLength) + "...";
-  };
-
-  const formatDate = (dateString: string): string => {
-    if (!dateString) return "";
-
-    const date = new Date(dateString);
-
-    // Check if date is valid
-    if (isNaN(date.getTime())) return "";
-
-    // Array of month names
-    const monthNames = [
-      "Jan",
-      "Feb",
-      "Mar",
-      "Apr",
-      "May",
-      "Jun",
-      "Jul",
-      "Aug",
-      "Sep",
-      "Oct",
-      "Nov",
-      "Dec",
-    ];
-
-    // Get month name, day, and year
-    const monthName = monthNames[date.getMonth()];
-    const day = String(date.getDate()).padStart(2, "0");
-    const year = date.getFullYear();
-
-    // Return formatted date
-    return `${monthName} ${day} ${year}`;
-  };
-
-  // Function to ensure image source has proper format
-  const getImageSrc = (imageData: any) => {
-    if (!imageData) return "/placeholder-image.jpg"; // Fallback image
-
-    // If the image already has a data URI prefix, use it as is
-    if (imageData.startsWith("data:image/") || imageData.startsWith("http")) {
-      return imageData;
-    }
-
-    // Otherwise, add the data URI prefix for base64 images
-    return `data:image/jpeg;base64,${imageData}`;
-  };
-
   return (
     <>
       <section className="tw-py-24">
@@ -130,7 +78,7 @@ const BlogList = () => {
                       width={0}
                       height={0}
                       sizes="100vw"
-                      className="card-img-top tw-w-[300px] tw-h-[200px] tw-object-cover"
+                      className="card-img-top tw-h-[200px] tw-object-cover"
                     />
                     <div className="card-body p-4">
                       <h5 className="card-title">{post.title}</h5>
