@@ -6,7 +6,7 @@ import LoadingState from "@/components/LoadingState";
 const BlogSlugPage = ({ id }) => {
   const { blogSlug, loading } = useBlogStore();
   useFetchBlogSlug(id);
-  console.log("dd::", blogSlug);
+
   const content =
     blogSlug && blogSlug.length > 0
       ? blogSlug[0].blogPostContent.replace(
