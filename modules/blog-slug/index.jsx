@@ -3,9 +3,9 @@ import { useBlogStore } from "@/lib/store/useBlogStore";
 import { useFetchBlogSlug } from "@/lib/hooks/useBlogFetcher";
 import LoadingState from "@/components/LoadingState";
 
-const BlogSlugPage = ({ id, domain }) => {
+const BlogSlugPage = ({ id }) => {
   const { blogSlug, loading } = useBlogStore();
-  useFetchBlogSlug(id, domain);
+  useFetchBlogSlug(id);
 
   const content = blogSlug && blogSlug.length > 0 ? blogSlug[0].blogPostContent : "";
 

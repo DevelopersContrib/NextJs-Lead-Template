@@ -22,26 +22,30 @@ const insertTagsAfterHeadingAndImage = (content, tags) => {
         Tags
       </div>
       <ul class="tw-w-full tw-inline-flex tw-flex-wrap tw-gap-2 tw-list-none tw-pl-0">
-        ${tags.map(tag => `
+        ${tags
+          .map(
+            (tag) => `
           <li class="tw-bg-gray-100 tw-px-3 tw-py-1 tw-rounded-md tw-text-sm">
             ${tag}
           </li>
-        `).join('')}
+        `
+          )
+          .join("")}
       </ul>
     </div>
   `;
-  
+
   const h1Match = /<h1[^>]*>.*?<\/h1>/i.exec(content);
   const imgMatch = /<img[^>]*>/i.exec(content);
-  
+
   if (h1Match && imgMatch) {
     const h1End = h1Match.index + h1Match[0].length;
     const imgEnd = imgMatch.index + imgMatch[0].length;
     const insertPosition = Math.max(h1End, imgEnd);
-    
+
     return content.substring(0, insertPosition) + tagsHtml + content.substring(insertPosition);
   }
-  
+
   return content;
 };
 
@@ -70,12 +74,12 @@ const BlogDetails = async ({ params }) => {
   const twitter_url = c.data.twitter;
   const fb_url = c.data.fb;
   const linkedin_url = c.data.linkedin;
-  
+
   if (post) {
     const tagsList = parseTagsToArray(post.tags);
-    
+
     const modifiedContent = insertTagsAfterHeadingAndImage(post.content, tagsList);
-    
+
     return (
       <>
         <HeaderWidget
