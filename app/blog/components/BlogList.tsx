@@ -6,27 +6,31 @@ import { useBlogStore } from "@/lib/store/useBlogStore";
 import { useFetchBlog } from "@/lib/hooks/useBlogFetcher";
 import { useEffect, useState } from "react";
 
-interface BlogPost {
+type BlogPost = {
   id: string;
   type: string;
   contents: BlogPostContent[];
   createdAt: string;
   updatedAt: string;
   jobId: string;
-}
+  slug: string;
+  title: string;
+  image_url: string;
+  image_caption: string;
+};
 
-interface BlogPostContent {
+type BlogPostContent = {
   title: string;
   imageBase64: string;
   blogPostTags: string[];
   imageCaption: string;
   blogPostContent: string;
-}
+};
 
-interface BlogApiResponse {
+type BlogApiResponse = {
   status: boolean;
   blogs: BlogPost[];
-}
+};
 type content = {
   title: string;
   imageUrl: string;
@@ -85,7 +89,7 @@ const BlogList = () => {
       "Sep",
       "Oct",
       "Nov",
-      "Dec"
+      "Dec",
     ];
 
     // Get month name, day, and year
@@ -99,13 +103,13 @@ const BlogList = () => {
 
   // Function to ensure image source has proper format
   const getImageSrc = (imageData: any) => {
-    if (!imageData) return '/placeholder-image.jpg'; // Fallback image
-    
+    if (!imageData) return "/placeholder-image.jpg"; // Fallback image
+
     // If the image already has a data URI prefix, use it as is
-    if (imageData.startsWith('data:image/') || imageData.startsWith('http')) {
+    if (imageData.startsWith("data:image/") || imageData.startsWith("http")) {
       return imageData;
     }
-    
+
     // Otherwise, add the data URI prefix for base64 images
     return `data:image/jpeg;base64,${imageData}`;
   };
@@ -115,7 +119,7 @@ const BlogList = () => {
       try {
         setLoading(true);
         const response = await fetch("/api/blogs", {
-          next: { revalidate: 0 }
+          next: { revalidate: 0 },
         });
         if (response.ok) {
           const res: BlogApiResponse = await response.json();
@@ -160,9 +164,7 @@ const BlogList = () => {
       if (!postContent) return null;
 
       // Create a slug from the title or use a default
-      const slug =
-        postContent.title?.toLowerCase().replace(/\s+/g, "-") ||
-        `post-${index}`;
+      const slug = postContent.title?.toLowerCase().replace(/\s+/g, "-") || `post-${index}`;
       const postId = post.id;
       const formattedDate = formatDate(post.createdAt);
 
@@ -179,27 +181,23 @@ const BlogList = () => {
                     href={`/blog/${slug + "---" + postId}`}
                     style={{
                       cursor: "pointer",
-                      textDecoration: "none"
+                      textDecoration: "none",
                     }}
                     className="tw-text-black"
                   >
                     {postContent.title}
                   </a>
                 </h5>
-                <div className="tw-font-semibold tw-text-sm tw-text-gray-600">
-                  Tags
-                </div>
+                <div className="tw-font-semibold tw-text-sm tw-text-gray-600">Tags</div>
                 <ul className="tw-w-full tw-inline-flex tw-flex-wrap tw-gap-2 tw-list-none tw-pl-0 mb-3 ">
-                  {postContent.blogPostTags?.map(
-                    (tag: string, tagIndex: number) => (
-                      <li
-                        key={tagIndex}
-                        className="tw-bg-gray-100 tw-px-2 tw-py-1 tw-rounded-md tw-text-xs"
-                      >
-                        {tag}
-                      </li>
-                    )
-                  )}
+                  {postContent.blogPostTags?.map((tag: string, tagIndex: number) => (
+                    <li
+                      key={tagIndex}
+                      className="tw-bg-gray-100 tw-px-2 tw-py-1 tw-rounded-md tw-text-xs"
+                    >
+                      {tag}
+                    </li>
+                  ))}
                 </ul>
                 <div className="tw-w-full mt-auto tw-flex tw-justify-between tw-items-center mb-2">
                   <a
@@ -207,7 +205,7 @@ const BlogList = () => {
                     href={`/blog/${slug + "---" + postId}`}
                     style={{
                       cursor: "pointer",
-                      textDecoration: "none"
+                      textDecoration: "none",
                     }}
                   >
                     Read More
@@ -217,9 +215,7 @@ const BlogList = () => {
                       <div>
                         <FontAwesomeIcon icon={faCalendar} />
                       </div>
-                      <div>
-                        {formattedDate}
-                      </div>
+                      <div>{formattedDate}</div>
                     </div>
                   )}
                 </div>
@@ -230,7 +226,7 @@ const BlogList = () => {
                 href={`/blog/${slug + "---" + postId}`}
                 style={{
                   cursor: "pointer",
-                  textDecoration: "none"
+                  textDecoration: "none",
                 }}
                 className="tw-inline-flex tw-py-4 tw-pl-4"
               >
@@ -256,9 +252,7 @@ const BlogList = () => {
         <div className="container">
           <div className="row">
             <div className="col-xl-12">
-              <h2 className="tw-font-bold tw-text-3xl mb-4 text-center">
-                Latest Blogs
-              </h2>
+              <h2 className="tw-font-bold tw-text-3xl mb-4 text-center">Latest Blogs</h2>
             </div>
             <div className="col-md-12">
               <div className="row justify-content-center">
@@ -290,7 +284,6 @@ const BlogList = () => {
                   </a>
                 ))
               : null}
-
           </div>
         </div>
       </section>
