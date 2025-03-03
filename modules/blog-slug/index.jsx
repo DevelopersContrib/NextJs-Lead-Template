@@ -6,8 +6,14 @@ import LoadingState from "@/components/LoadingState";
 const BlogSlugPage = ({ id }) => {
   const { blogSlug, loading } = useBlogStore();
   useFetchBlogSlug(id);
-
-  const content = blogSlug && blogSlug.length > 0 ? blogSlug[0].blogPostContent : "";
+  console.log("dd::", blogSlug);
+  const content =
+    blogSlug && blogSlug.length > 0
+      ? blogSlug[0].blogPostContent.replace(
+          "https://via.placeholder.com/600x400",
+          blogSlug[0].imageUrl
+        )
+      : "";
 
   return loading ? (
     <section className="tw-min-h-screen tw-py-16">
