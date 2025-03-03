@@ -2,6 +2,8 @@
 import { faCalendar } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
+import { useBlogStore } from "@/lib/store/useBlogStore";
+import { useFetchBlog } from "@/lib/hooks/useBlogFetcher";
 import { useEffect, useState } from "react";
 
 interface BlogPost {
@@ -25,8 +27,33 @@ interface BlogApiResponse {
   status: boolean;
   blogs: BlogPost[];
 }
+type content = {
+  title: string;
+  imageUrl: string;
+  blogPostTags: string[];
+  imageCaption: string;
+  blogPostContent: string;
+};
+type blogResponse = {
+  id: number;
+  type: string;
+  contents: content[];
+  createdAt: string;
+  updatedAt: string;
+  jobId: string;
+};
 
 const BlogList = () => {
+  const { blog } = useBlogStore();
+  useFetchBlog();
+
+  const blogPost = blog.map((item: blogResponse) => ({
+    id: item.id,
+    slug: item.contents[0].title,
+    title: item.contents[0].title,
+    image_url: item.contents[0].imageUrl,
+    image_caption: item.contents[0].imageCaption,
+  }));
   const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
@@ -238,6 +265,32 @@ const BlogList = () => {
                 <div className="col-md-6">{renderBlogPosts()}</div>
               </div>
             </div>
+
+            {blog.length > 0
+              ? blogPost.map((post: BlogPost, index: number) => (
+                  <a
+                    className="col-md-4 mb-4"
+                    key={index}
+                    href={`/blog/${post.id}/${post.slug}`}
+                    style={{ cursor: "pointer", textDecoration: "none" }}
+                  >
+                    <div className="card h-100">
+                      <Image
+                        src={post.image_url}
+                        alt={post.image_caption}
+                        width={0}
+                        height={0}
+                        sizes="100vw"
+                        className="card-img-top tw-w-[300px] tw-h-[200px] tw-object-cover"
+                      />
+                      <div className="card-body p-4">
+                        <h5 className="card-title">{post.title}</h5>
+                      </div>
+                    </div>
+                  </a>
+                ))
+              : null}
+
           </div>
         </div>
       </section>

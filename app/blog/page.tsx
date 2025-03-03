@@ -1,4 +1,3 @@
-
 import Ai from "@/components/Ai";
 import Footer from "@/components/footer";
 import HeaderWidget from "@/components/HeaderWidget";
