@@ -18,10 +18,7 @@ const BlogPost = async ({ params }) => {
         accountGA={c.data.accountGA}
         adsenseClientId={c.data.adsenseClientId}
       />
-      <BlogSlugPage
-        id={id}
-        domain={domain}
-      />
+      <BlogSlugPage id={id} />
       <Footer
         domain={domain}
         twitter_url={twitter_url}
