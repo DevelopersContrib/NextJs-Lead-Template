@@ -1,8 +1,6 @@
 "use client";
 import { useFetchBlog } from "@/lib/hooks/useBlogFetcher";
 import { useBlogStore } from "@/lib/store/useBlogStore";
-import { faCalendar } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
 
 type BlogPost = {
@@ -43,6 +41,45 @@ type blogResponse = {
   jobId: string;
 };
 
+const truncateText = (text: string, maxLength: number = 200): string => {
+  if (!text) return "";
+  if (text.length <= maxLength) return text;
+  return text.slice(0, maxLength) + "...";
+};
+
+const formatDate = (dateString: string): string => {
+  if (!dateString) return "";
+
+  const date = new Date(dateString);
+
+  const months = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec"
+  ];
+
+  const month = months[date.getMonth()];
+  const day = date.getDate();
+  const year = date.getFullYear();
+
+  let hours = date.getHours();
+  const ampm = hours >= 12 ? "PM" : "AM";
+  hours = hours % 12;
+  hours = hours ? hours : 12;
+  const minutes = date.getMinutes().toString().padStart(2, "0");
+
+  return `${month} ${day}, ${year} ${hours}:${minutes} ${ampm}`;
+};
+
 const BlogList = () => {
   const { blog, loading } = useBlogStore();
   useFetchBlog();
@@ -63,13 +100,15 @@ const BlogList = () => {
         <div className="container">
           <div className="row">
             <div className="col-xl-12">
-              <h2 className="tw-font-bold tw-text-3xl mb-4 text-center">
-                Latest Blogs
-              </h2>
+              <div className="title-center-circle">
+                <h2 className="tw-font-extrabold tw-text-5xl text-uppercase text-center tw-mb-14">
+                  Latest Blogs
+                </h2>
+              </div>
             </div>
             <div className="col-lg-12">
               <div className="row justify-content-center">
-                <div className="col-md-6">
+                <div className="col-md-9">
                   {loading ? (
                     <p className="text-center">Loading blog posts...</p>
                   ) : blog.length > 0 ? (
@@ -87,19 +126,22 @@ const BlogList = () => {
                                     /\s+/g,
                                     "-"
                                   )}`}
-                                  className="tw-text-black"
+                                  className="tw-text-black tw-text-2xl tw-font-bold tw-leading-wide"
                                 >
                                   {post.title}
                                 </a>
                               </h5>
-                              <div className="tw-font-semibold tw-text-sm tw-text-gray-600">
+                              <p className="tw-text-[#6B6B6B] tw-mb-4 tw-text-sm">
+                                {truncateText(post.image_caption)}
+                              </p>
+                              <div className="tw-font-semibold tw-text-sm tw-text-gray-600 tw-mb-2">
                                 Tags
                               </div>
                               <ul className="tw-w-full tw-inline-flex tw-flex-wrap tw-gap-2 tw-list-none tw-pl-0 mb-3 ">
                                 {post.tags.map((tag: string, index: number) => (
                                   <li
                                     key={index}
-                                    className="tw-bg-gray-100 tw-px-2 tw-py-1 tw-rounded-md tw-text-xs"
+                                    className="tw-bg-gray-100 tw-px-2 tw-py-1 tw-rounded-md tw-text-xs tw-text-[#6B6B6B]"
                                   >
                                     {tag}
                                   </li>
@@ -107,7 +149,7 @@ const BlogList = () => {
                               </ul>
                               <div className="tw-w-full mt-auto tw-flex tw-justify-between tw-items-center mb-2">
                                 <a
-                                  className="btn btn-secondary"
+                                  className="btn !tw-text-xs !tw-bg-black !tw-text-white hover:!tw-bg-black/50 "
                                   href={`/blog/${post.id}/${post.slug.replace(
                                     /\s+/g,
                                     "-"
@@ -119,11 +161,22 @@ const BlogList = () => {
                                 >
                                   Read More
                                 </a>
-                                <div className="tw-bg-blue-100 tw-px-2 tw-py-1 tw-rounded-md tw-text-xs tw-gap-2 tw-inline-flex tw-items-center tw-text-blue-500/80">
+                                <div className=" tw-px-2 tw-py-1 tw-rounded-md tw-text-xs tw-gap-2 tw-inline-flex tw-items-center tw-text-[#6B6B6B] tw-justify-center">
                                   <div>
-                                    <FontAwesomeIcon icon={faCalendar} />
+                                    <svg
+                                      xmlns="http://www.w3.org/2000/svg"
+                                      width="16"
+                                      height="16"
+                                      fill="none"
+                                      viewBox="0 0 64 64"
+                                    >
+                                      <path
+                                        fill="#FFC017"
+                                        d="m39.637 40.831-5.771 15.871a1.99 1.99 0 0 1-3.732 0l-5.771-15.87a2.02 2.02 0 0 0-1.194-1.195L7.298 33.866a1.99 1.99 0 0 1 0-3.732l15.87-5.771a2.02 2.02 0 0 0 1.195-1.194l5.771-15.871a1.99 1.99 0 0 1 3.732 0l5.771 15.87a2.02 2.02 0 0 0 1.194 1.195l15.871 5.771a1.99 1.99 0 0 1 0 3.732l-15.87 5.771a2.02 2.02 0 0 0-1.195 1.194"
+                                      ></path>
+                                    </svg>
                                   </div>
-                                  <div>{post.createdAt}</div>
+                                  <div>{formatDate(post.createdAt)}</div>
                                 </div>
                               </div>
                             </div>
@@ -146,7 +199,7 @@ const BlogList = () => {
                                 width={0}
                                 height={0}
                                 sizes="100vw"
-                                className="tw-h-[200px] tw-w-full tw-object-contain"
+                                className="tw-h-[200px] tw-w-full tw-object-contain tw-rounded"
                               />
                             </a>
                           </div>
@@ -156,6 +209,36 @@ const BlogList = () => {
                   ) : (
                     <p className="text-center">No blog posts available</p>
                   )}
+                </div>
+                <div className="col-md-3 !tw-border-l !tw-border-gray-200 !tw-border-solid !tw-border-t-0 !tw-border-r-0 !tw-border-b-0">
+                  <div className="tw-py-4 tw-space-y-4">
+                    {Array.from({ length: 7 }).map((_, index) => (
+                      <div className="" key={index}>
+                        <h5 className="tw-text-black tw-text-2xl tw-font-bold tw-leading-wide tw-flex tw-items-center">
+                          <a
+                            href="https://adao.ai"
+                            className="tw-text-black tw-inline-flex"
+                          >
+                            <span className="tw-inline tw-mr-2">
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="24"
+                                height="24"
+                                fill="none"
+                                viewBox="0 0 64 64"
+                              >
+                                <path
+                                  fill="#FFC017"
+                                  d="m39.637 40.831-5.771 15.871a1.99 1.99 0 0 1-3.732 0l-5.771-15.87a2.02 2.02 0 0 0-1.194-1.195L7.298 33.866a1.99 1.99 0 0 1 0-3.732l15.87-5.771a2.02 2.02 0 0 0 1.195-1.194l5.771-15.871a1.99 1.99 0 0 1 3.732 0l5.771 15.87a2.02 2.02 0 0 0 1.194 1.195l15.871 5.771a1.99 1.99 0 0 1 0 3.732l-15.87 5.771a2.02 2.02 0 0 0-1.195 1.194"
+                                ></path>
+                              </svg>
+                            </span>
+                            Get the ADAO tokens Today
+                          </a>
+                        </h5>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
