@@ -212,6 +212,7 @@ const BlogList = () => {
                 </div>
                 <div className="col-md-3 !tw-border-l !tw-border-gray-200 !tw-border-solid !tw-border-t-0 !tw-border-r-0 !tw-border-b-0">
                   <div className="tw-py-4 tw-space-y-4">
+                    
                     {Array.from({ length: 7 }).map((_, index) => (
                       <div className="" key={index}>
                         <h5 className="tw-text-black tw-text-2xl tw-font-bold tw-leading-wide tw-flex tw-items-center">
