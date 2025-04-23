@@ -255,7 +255,7 @@ export default async function Home() {
           </div>
         </div>
       </section>
-      <Ai />
+      
       <ScriptLoader html={html} />
       <Footer
         domain={domain}
