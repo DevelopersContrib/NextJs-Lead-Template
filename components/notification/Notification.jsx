@@ -54,7 +54,7 @@ const Notification = () => {
         setTimeout(() => {
           setCurrentIndex((prev) => (prev + 1) % notifications.length);
           setIsVisible(true);
-          setRemaining(5000);
+          setRemaining(20000);
         }, 5000);
       }, remaining);
     }
@@ -123,7 +123,7 @@ const Notification = () => {
             {/* Close Button */}
             <button
               onClick={handleClose}
-              className={`tw-absolute tw-right-4 tw-top-1/2 -tw-translate-y-1/2 tw-p-1 tw-rounded-full tw-bg-transparent hover:tw-bg-gray-100 tw-transition-colors tw-text-gray-400 ${
+              className={`tw-absolute tw-right-4 tw-top-1/2 -tw-translate-y-1/2 tw-p-1 tw-rounded-full tw-bg-transparent hover:tw-bg-gray-100 tw-transition-colors tw-text-gray-400 tw-border-none ${
                 isHovered ? "tw-inline-flex" : "tw-hidden"
               } sm:tw-right-2`}
               aria-label="Close notification"
