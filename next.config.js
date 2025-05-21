@@ -53,6 +53,7 @@ const nextConfig = {
       "vnoclogos.s3.amazonaws.com",
       "vbot-images.s3.us-east-1.amazonaws.com",
       "manage.vnoc.com",
+      "randomuser.me",
     ],
   },
   env: {

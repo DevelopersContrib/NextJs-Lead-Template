@@ -1,20 +1,19 @@
-import HeaderWidget from "../components/HeaderWidget";
-import ScriptLoader from "../components/ScriptLoader";
-import Footer from "../components/footer";
-import TopDomainsComponent from "../components/TopDomainsComponent";
-import Ai from "../components/Ai";
-import Logo from "../components/logo";
-import Image from "next/image";
-import Container from "../components/Container";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faUsers,
-  faUserCog,
   faCogs,
   faGlobe,
-  faCircleNotch,
+  faUserCog,
+  faUsers
 } from "@fortawesome/free-solid-svg-icons";
-import { getData, getDomain, getTopsites, getScript } from "../lib/data";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Image from "next/image";
+import Container from "../components/Container";
+import Footer from "../components/footer";
+import HeaderWidget from "../components/HeaderWidget";
+import Logo from "../components/logo";
+import Notification from "../components/notification/Notification";
+import ScriptLoader from "../components/ScriptLoader";
+import TopDomainsComponent from "../components/TopDomainsComponent";
+import { getData, getDomain, getScript, getTopsites } from "../lib/data";
 import BlogList from "./blog/components/BlogList";
 
 export default async function Home() {
@@ -45,6 +44,7 @@ export default async function Home() {
         accountGA={c.data.accountGA}
         adsenseClientId={c.data.adsenseClientId}
       />
+      <Notification />
       <section
         style={{ backgroundImage: `url('${background}')` }}
         className="tw-min-h-[calc(100vh-40px)] tw-bg-cover tw-bg-no-repeat tw-relative tw-text-white tw-bg-[50%] tw-py-12 tw-flex tw-w-full tw-items-center"
