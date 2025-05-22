@@ -54,6 +54,7 @@ const nextConfig = {
       "vbot-images.s3.us-east-1.amazonaws.com",
       "manage.vnoc.com",
       "randomuser.me",
+      "i.pravatar.cc",
     ],
   },
   env: {
