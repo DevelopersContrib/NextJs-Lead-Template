@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Script from 'next/script';
 import { getData } from '@/lib/data'
 import { Metadata } from 'next';
-
+import First100FoundersModalWrapper from "@/components/First100FoundersModalWrapper";
 
 // Asynchronously generate metadata for SEO
 export async function generateMetadata(): Promise<Metadata> {
@@ -36,6 +36,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <First100FoundersModalWrapper />
       <body>{children}</body>
     </html>
   )
