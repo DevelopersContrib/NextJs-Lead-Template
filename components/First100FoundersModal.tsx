@@ -113,7 +113,7 @@ export interface First100FoundersModalProps {
 }
 
 export const First100FoundersModal: React.FC<First100FoundersModalProps> = ({
-  targetUrl = "/first100founders",
+  targetUrl = "https://www.ventureos.com/first100founders",
   delay = 15000,
   excludedPaths = ["/first100founders", "/admin"],
   sessionKey = "first100founders_modal_shown",
@@ -270,18 +270,10 @@ export const First100FoundersModal: React.FC<First100FoundersModalProps> = ({
   };
 
   const handleNavigate = () => {
-    if (onCTAClick) {
-      onCTAClick();
+    if (onCTAClick) onCTAClick();
+    if (typeof window !== "undefined") {
+      window.open("https://www.ventureos.com/first100founders", "_blank");
     }
-
-    if (onNavigate) {
-      onNavigate(targetUrl);
-    } else if (typeof window !== "undefined") {
-      window.location.href = targetUrl;
-    }
-
-    setIsVisible(false);
-    setHasShown(true);
   };
 
   // Default benefits
@@ -289,25 +281,25 @@ export const First100FoundersModal: React.FC<First100FoundersModalProps> = ({
     {
       icon: <Rocket className="w-8 h-8" />,
       text: "Full platform access on January 15, 2026",
-      color: "text-blue-300",
+      color: "text-white",
       bg: "from-blue-500/20 to-cyan-500/20",
     },
     {
       icon: <Zap className="w-8 h-8" />,
       text: "Auto-built contractor website with ALL AI agents",
-      color: "text-purple-300",
+      color: "text-white",
       bg: "from-purple-500/20 to-pink-500/20",
     },
     {
       icon: <Crown className="w-8 h-8" />,
       text: "Early access to DomainFund Secret Auction",
-      color: "text-yellow-300",
+      color: "text-white",
       bg: "from-yellow-500/20 to-orange-500/20",
     },
     {
       icon: <Sparkles className="w-8 h-8" />,
       text: "Founders Badge & exclusive community access",
-      color: "text-pink-300",
+      color: "text-white",
       bg: "from-pink-500/20 to-red-500/20",
     },
   ];
