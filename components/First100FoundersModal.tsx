@@ -276,11 +276,11 @@ export const First100FoundersModal: React.FC<First100FoundersModalProps> = ({
     }
   };
 
-  // Default benefits
+  // Default benefits (cards)
   const defaultBenefits = benefits || [
     {
       icon: <Rocket className="w-8 h-8" />,
-      text: "Full platform access on January 15, 2026",
+      text: "Full Beta Launch - Now Live",
       color: "text-white",
       bg: "from-blue-500/20 to-cyan-500/20",
     },
@@ -446,7 +446,7 @@ export const First100FoundersModal: React.FC<First100FoundersModalProps> = ({
             <div className="tw-inline-flex tw-items-center tw-space-x-2 tw-bg-gradient-to-r tw-from-yellow-400 tw-to-orange-500 tw-rounded-full tw-px-8 tw-py-3 tw-shadow-2xl tw-mb-4">
               <Sparkles className="tw-w-6 tw-h-6 tw-text-white tw-animate-pulse" />
               <span className="tw-text-white tw-font-bold tw-text-base tw-uppercase tw-tracking-wider">
-                {content?.title || "Limited Time Offer"}
+                {content?.subtitle || "We Are Now in Full Beta Launch"}
               </span>
             </div>
 
@@ -462,17 +462,12 @@ export const First100FoundersModal: React.FC<First100FoundersModalProps> = ({
                 fontFamily: "Poppins, sans-serif",
               }}
             >
-              🎉 Be One of the
-              <br />
-              {content?.subtitle || "First 100 Founders!"}
+              {content?.title || "VentureOS Beta Now Live"}
             </h1>
 
-            <p className="tw-text-2xl md:tw-text-3xl lg:tw-text-4xl tw-text-white/90 tw-font-semibold tw-mb-4">
-              {content?.description || "Don't wait for the public launch!"}
-            </p>
-            <p className="tw-text-xl md:tw-text-2xl tw-text-white/70 tw-max-w-3xl tw-mx-auto">
-              Secure your spot now and get exclusive access to VentureOS
-              platform with incredible benefits.
+            <p className="tw-text-xl md:tw-text-2xl tw-text-white/90 tw-font-semibold tw-max-w-3xl tw-mx-auto">
+              {content?.description ||
+                "Join the beta and experience the future of business building with AI-powered tools. Full platform access is now available!"}
             </p>
           </div>
 
@@ -515,7 +510,7 @@ export const First100FoundersModal: React.FC<First100FoundersModalProps> = ({
                 border: "none",
               }}
             >
-              <span>{content?.ctaText || "Reserve My Founder Spot"}</span>
+              <span>{content?.ctaText || "Access Beta Now"}</span>
               <ArrowRight className="tw-w-6 tw-h-6 tw-group-hover:tw-translate-x-2 tw-transition-transform" />
             </button>
             <button
@@ -529,7 +524,7 @@ export const First100FoundersModal: React.FC<First100FoundersModalProps> = ({
           {/* Footer Note */}
           <p className="tw-text-center tw-text-white/60 tw-text-lg md:tw-text-xl tw-mt-8">
             {content?.footerText ||
-              "🔥 Only 100 slots available • Act fast before they're gone!"}
+              "Limited beta access • Join now to secure your spot!"}
           </p>
         </div>
       </div>
