@@ -82,22 +82,23 @@ function LeadForm({ domain, setSuccess, setReferralData }) {
   };
 
   const showStep = () => {
-    // console.log(errors);
     return (
-      <div className="">
-        <div className="input-group input-group-lg mb-3">
+      <div className="hero-cta-form">
+        <div className="input-group input-group-lg hero-cta-input-group">
           <input
-            type="text"
+            type="email"
             name="email"
             className="form-control"
+            placeholder="Enter your email"
             onChange={handleChange}
+            aria-label="Email address"
           />
           <button
-            className="btn btn-danger tw-px-[3rem!important]"
+            className="btn hero-cta-btn"
             type="button"
             onClick={handleSubmit}
           >
-            Submit
+            Get access
           </button>
         </div>
         {errors.validate ? <ErrorBlock msg={errors.emailError} /> : null}

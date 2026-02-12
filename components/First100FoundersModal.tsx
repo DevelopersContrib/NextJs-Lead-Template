@@ -202,6 +202,10 @@ export const First100FoundersModal: React.FC<First100FoundersModalProps> = ({
         sessionStorage.removeItem(sessionKey);
       }
 
+      // Optional: show modal quickly for testing (?showModal=true)
+      const showModalNow = urlParams.get("showModal") === "true";
+      const effectiveDelay = showModalNow ? 600 : delay;
+
       const wasShown = sessionStorage.getItem(sessionKey);
 
       if (wasShown && !testMode && !clearModal) {
@@ -217,7 +221,7 @@ export const First100FoundersModal: React.FC<First100FoundersModalProps> = ({
 
       console.log(
         "[First100FoundersModal] Will show after",
-        delay,
+        effectiveDelay,
         "ms on path:",
         currentPath
       );
@@ -246,7 +250,7 @@ export const First100FoundersModal: React.FC<First100FoundersModalProps> = ({
         if (!testMode) {
           sessionStorage.setItem(sessionKey, "true");
         }
-      }, delay);
+      }, effectiveDelay);
 
       return () => {
         clearTimeout(timer);

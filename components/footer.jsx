@@ -10,8 +10,8 @@ export default function Footer({domain,twitter_url,fb_url,linkedin_url}) {
   const footer_text = 'is a proud venture of Global Ventures,LLC.Join our network of performance based companies using '+domain+'.';
   return (
     <>
-      <footer className='tw-text-white'>
-        <section className='tw-bg-[#191919] tw-py-14'>
+      <footer className="site-footer tw-text-white">
+        <section className="footer-main">
           <div className="container">
             <div className="row gy-3">
               <div className="col-xl-3">
@@ -158,7 +158,7 @@ export default function Footer({domain,twitter_url,fb_url,linkedin_url}) {
             </div>
           </div>
         </section>
-        <section className='tw-bg-[#111] tw-py-6'>
+        <section className="footer-bottom">
           <div className="container">
             <div className="row">
               <div className="col-xl-6">

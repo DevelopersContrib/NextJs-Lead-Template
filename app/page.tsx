@@ -1,12 +1,15 @@
 import {
+  faBriefcase,
   faCogs,
-  faGlobe,
+  faCoins,
+  faHandshake,
   faUserCog,
   faUsers
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
 import Container from "../components/Container";
+import WhyJoinUsIsometric from "../components/WhyJoinUsIsometric";
 import Footer from "../components/footer";
 import HeaderWidget from "../components/HeaderWidget";
 import Logo from "../components/logo";
@@ -46,89 +49,87 @@ export default async function Home() {
       />
       <Notification />
       <section
+        id="hero"
+        className="hero-wrap tw-text-white"
         style={{ backgroundImage: `url('${background}')` }}
-        className="tw-min-h-[calc(100vh-40px)] tw-bg-cover tw-bg-no-repeat tw-relative tw-text-white tw-bg-[50%] tw-py-12 tw-flex tw-w-full tw-items-center"
       >
-        <div className="tw-bg-[rgba(0,0,0,0.55)] tw-top-0 tw-left-0 tw-right-0 tw-bottom-0 tw-absolute"></div>
-        <div className="container tw-relative">
-          <div className="row tw-mb-8">
-            <div className="col-xl-12 tw-text-center">
-              <Logo
-                domain={domain}
-                logo={c.data.logo}
-              />
-              <h5 className="tw-font-semibold text-capitalize mb-3">{title}</h5>
+        <div className="hero-overlay" aria-hidden="true" />
+        <div className="container">
+          <div className="hero-content text-center mx-auto">
+            <span className="hero-badge">Join the community</span>
+            <Logo domain={domain} logo={c.data.logo} />
+            <h1 className="hero-title text-capitalize">{title}</h1>
+            <p className="hero-description">{description}</p>
+            <div className="home-hero-form-box text-center mx-auto">
+              <p className="hero-cta-headline">Get early access</p>
+              <p className="hero-cta-subtext">Join the community. No spam—unsubscribe anytime.</p>
+              <Container domain={domain} />
             </div>
-            <div className="col-xl-12">
-              <div className="row">
-                <div className="col-xl-8 offset-xl-2">
-                  <div className="tw-bg-[rgba(0,0,0,0.75)] tw-p-8 tw-rounded-lg">
-                    <Container domain={domain} />
-                    <p className="text-center mb-0 small text-secondary">{description}</p>
-                  </div>
-                </div>
+          </div>
+        </div>
+        <div className="hero-scroll-hint" aria-hidden="true">
+          Scroll
+        </div>
+      </section>
+      <section id="why-us" className="home-section" aria-label="Why join us">
+        <div className="container">
+          <div className="row align-items-center">
+            <div className="col-xl-6 mb-5 mb-xl-0">
+              <div className="home-why-us-image">
+                <WhyJoinUsIsometric />
+              </div>
+            </div>
+            <div className="col-xl-6">
+              <span className="section-label">Why join us</span>
+              <div className="home-why-us-content">
+                <h2 className="section-title mb-4">Follow, Build, and Help Launch</h2>
+                <p className="text-secondary mb-3">
+                  Follow {domain} and other great ventures on the Contrib platform.
+                </p>
+                <p className="text-secondary mb-3">
+                  Build {domain} and Help cofound a relevant new Startup, Part-Time.
+                </p>
+                <p className="text-secondary mb-4">
+                  Launch {domain} and you could be front and center in the process. Launch {domain}{" "}
+                  with us today!
+                </p>
+                <a
+                  href={follow_link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="home-cta-btn"
+                >
+                  Follow {domain}
+                </a>
               </div>
             </div>
           </div>
         </div>
       </section>
-      <section className="tw-py-24">
-        <div className="container">
-          <div className="row lg:tw-items-center">
-            <div className="col-xl-6 mb-4 mb-xl-0">
-              <Image
-                src="https://cdn.vnoc.com/background/contrib/why-us.png"
-                width={470}
-                height={496}
-                alt=""
-                className="img-fluid"
-              />
-            </div>
-            <div className="col-xl-6 mb-4 mb-xl-0">
-              <h2 className="tw-font-extrabold tw-text-5xl mb-3">Follow, Build, and Help Launch</h2>
-              <p className="text-secondary">
-                Follow {domain} and other great ventures on the Contrib platform.
-              </p>
-              <p className="text-secondary">
-                Build {domain} and Help cofound a relevant new Startup, Part-Time.
-              </p>
-              <p className="text-secondary">
-                Launch {domain} and you could be front and center in the process. Launch domain.com
-                with us today!
-              </p>
-              <a
-                href={follow_link}
-                target="_blank"
-                className="btn btn-primary btn-lg"
-              >
-                Learn About {domain}
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section className="tw-py-24 bg-light">
+      <section id="team" className="home-section bg-light">
         <div className="container">
           <div className="row">
-            <div className="col-xl-12">
+            <div className="col-xl-12 text-center">
+              <span className="section-label">The team</span>
               <div className="title-center-circle">
-                <h2 className="tw-font-extrabold tw-text-5xl text-uppercase text-center">
+                <h2 className="section-title text-uppercase">
                   {domain} team
                 </h2>
               </div>
+              <p className="section-subtitle mx-auto">
+                Our awesome team that helps you make the right choice.
+              </p>
             </div>
           </div>
           <div className="row align-items-center mt-5">
             <div className="col-xl-4">
-              <h3 className="tw-font-extrabold mb-3 text-secondary">
-                Our Awesome Team that Help You to Make Right Choice
+              <h3 className="tw-font-bold mb-4 text-secondary" style={{ fontSize: "1.1rem" }}>
+                Small, diverse, and passionate about what we do.
               </h3>
-              <div className="tw-bg-[#EEEDED] tw-p-12 tw-rounded-md tw-mb-4 tw-mt-8">
-                <div className="tw-d-block mb-3">
-                  <FontAwesomeIcon
-                    icon={faUsers}
-                    className="tw-w-20 tw-h-[5rem!important] tw-text-blue-500"
-                  />
+              <div className="home-team-card home-team-card-accent tw-mb-4 tw-mt-8">
+                <h4 className="home-team-card-title">Our Team</h4>
+                <div className="home-team-card-icon-wrap">
+                  <FontAwesomeIcon icon={faUsers} />
                 </div>
                 <div className="text-secondary">
                   <strong>{domain}</strong> is a bit different than most startups. We are small,
@@ -140,26 +141,22 @@ export default async function Home() {
             <div className="col-xl-8">
               <div className="row">
                 <div className="col-xl-6">
-                  <div className="tw-bg-[#EEEDED] tw-p-12 tw-rounded-md tw-mb-8 tw-mt-8">
-                    <div className="tw-d-block mb-3">
-                      <FontAwesomeIcon
-                        icon={faUserCog}
-                        className="tw-w-20 tw-h-[5rem!important] tw-text-blue-500"
-                      />
+                  <div className="home-team-card home-team-card-accent tw-mb-6 md:tw-mb-8 tw-mt-6 md:tw-mt-8">
+                    <h4 className="home-team-card-title">How We Work</h4>
+                    <div className="home-team-card-icon-wrap">
+                      <FontAwesomeIcon icon={faUserCog} />
                     </div>
                     <div className="text-secondary">
                       <strong>{domain}</strong> seeks to contract and hire the best people and then
-                      trust them: it&ampos;s the thinking behind the work at their own time policy.
+                      trust them: it&apos;s the thinking behind the work at their own time policy.
                     </div>
                   </div>
                 </div>
                 <div className="col-xl-6">
-                  <div className="tw-bg-[#EEEDED] tw-p-12 tw-rounded-md tw-mb-4">
-                    <div className="tw-d-block mb-3">
-                      <FontAwesomeIcon
-                        icon={faCogs}
-                        className="tw-w-20 tw-h-[5rem!important] tw-text-blue-500"
-                      />
+                  <div className="home-team-card home-team-card-accent tw-mb-4">
+                    <h4 className="home-team-card-title">What We Value</h4>
+                    <div className="home-team-card-icon-wrap">
+                      <FontAwesomeIcon icon={faCogs} />
                     </div>
                     <div className="text-secondary">
                       The <strong>{domain}</strong> team loves building things and focus on being
@@ -178,76 +175,76 @@ export default async function Home() {
         </div>
       </section>
       <TopDomainsComponent domains={topDomains} />
-      <section className="tw-py-12">
+      <section id="blog" className="home-section home-blog-section bg-light">
         <BlogList />
       </section>
-      <section className="tw-py-24 bg-light">
+      <section id="platform" className="home-section">
         <div className="container">
-          <div className="row mb-3">
-            <div className="col-xl-4 mb-3">
-              <div className="d-flex">
-                <div className="tw-mr-4">
-                  <FontAwesomeIcon
-                    icon={faGlobe}
-                    className="tw-w-8 tw-h-[2rem!important] text-secondary"
-                  />
+          <div className="row mb-4 text-center">
+            <div className="col-12">
+              <span className="section-label">Platform</span>
+              <h2 className="section-title">Ways to contribute</h2>
+              <p className="section-subtitle mx-auto mb-0">
+                Join the marketplace, contribute your skills, or explore crypto projects.
+              </p>
+            </div>
+          </div>
+          <div className="row mb-4">
+            <div className="col-md-6 col-xl-4 mb-4">
+              <div className="home-platform-card d-flex align-items-start">
+                <div className="home-platform-icon-wrap">
+                  <FontAwesomeIcon icon={faBriefcase} />
                 </div>
-                <div className="">
-                  <h5 className="tw-font-semibold">Contrib Marketplace</h5>
-                  <p className="mb-0">Browse Jobs, Ideas and Micro Tasks.</p>
+                <div>
+                  <h5 className="home-platform-card-title">Contrib Marketplace</h5>
+                  <p className="mb-0 text-secondary small">Browse Jobs, Ideas and Micro Tasks.</p>
                 </div>
               </div>
             </div>
-            <div className="col-xl-4 mb-3">
-              <div className="d-flex">
-                <div className="tw-mr-4">
-                  <FontAwesomeIcon
-                    icon={faGlobe}
-                    className="tw-w-8 tw-h-[2rem!important] text-secondary"
-                  />
+            <div className="col-md-6 col-xl-4 mb-4">
+              <div className="home-platform-card d-flex align-items-start">
+                <div className="home-platform-icon-wrap">
+                  <FontAwesomeIcon icon={faHandshake} />
                 </div>
-                <div className="">
-                  <h5 className="tw-font-semibold">Contribute</h5>
-                  <p className="mb-0">
+                <div>
+                  <h5 className="home-platform-card-title">Contribute</h5>
+                  <p className="mb-0 text-secondary small">
                     Contribute using your skills, services, apps and/or capital.
                   </p>
                 </div>
               </div>
             </div>
-            <div className="col-xl-4 mb-3">
-              <div className="d-flex">
-                <div className="tw-mr-4">
-                  <FontAwesomeIcon
-                    icon={faGlobe}
-                    className="tw-w-8 tw-h-[2rem!important] text-secondary"
-                  />
+            <div className="col-md-6 col-xl-4 mb-4">
+              <div className="home-platform-card d-flex align-items-start">
+                <div className="home-platform-icon-wrap">
+                  <FontAwesomeIcon icon={faCoins} />
                 </div>
-                <div className="">
-                  <h5 className="tw-font-semibold">Crypto Marketplace</h5>
-                  <p className="mb-0">Contribute to blockchain projects on premium urls today</p>
+                <div>
+                  <h5 className="home-platform-card-title">Crypto Marketplace</h5>
+                  <p className="mb-0 text-secondary small">Contribute to blockchain projects on premium urls today.</p>
                 </div>
               </div>
             </div>
           </div>
           <div className="row">
             <div className="col-xl-12">
-              <div className="tw-shadow-[-4px_49px_79px_0px_rgba(0,0,0,0.15)] tw-p-14 tw-rounded-md tw-bg-white">
-                <div className="row gy-3">
-                  <div className="col-xl-3 d-flex tw-flex-col text-center">
-                    <h2 className="tw-font-extrabold tw-text-3xl">5250</h2>
-                    <div>NO. OF MEMBERS</div>
+              <div className="home-stats-card" role="region" aria-label="Platform stats">
+                <div className="row gy-4">
+                  <div className="col-6 col-xl-3 d-flex flex-column align-items-center justify-content-center text-center">
+                    <span className="stat-number tw-text-2xl md:tw-text-3xl">5,250</span>
+                    <span className="tw-text-sm text-secondary">Members</span>
                   </div>
-                  <div className="col-xl-3 d-flex tw-flex-col text-center">
-                    <h2 className="tw-font-extrabold tw-text-3xl">310</h2>
-                    <div>NO. OF CAMPAIGNS</div>
+                  <div className="col-6 col-xl-3 d-flex flex-column align-items-center justify-content-center text-center">
+                    <span className="stat-number tw-text-2xl md:tw-text-3xl">310</span>
+                    <span className="tw-text-sm text-secondary">Campaigns</span>
                   </div>
-                  <div className="col-xl-3 d-flex tw-flex-col text-center">
-                    <h2 className="tw-font-extrabold tw-text-3xl">395</h2>
-                    <div>REWARDS GIVEN</div>
+                  <div className="col-6 col-xl-3 d-flex flex-column align-items-center justify-content-center text-center">
+                    <span className="stat-number tw-text-2xl md:tw-text-3xl">395</span>
+                    <span className="tw-text-sm text-secondary">Rewards given</span>
                   </div>
-                  <div className="col-xl-3 d-flex tw-flex-col text-center">
-                    <h2 className="tw-font-extrabold tw-text-3xl">3599072</h2>
-                    <div>TOTAL IMPRESSIONS</div>
+                  <div className="col-6 col-xl-3 d-flex flex-column align-items-center justify-content-center text-center">
+                    <span className="stat-number tw-text-2xl md:tw-text-3xl">3.6M+</span>
+                    <span className="tw-text-sm text-secondary">Impressions</span>
                   </div>
                 </div>
               </div>

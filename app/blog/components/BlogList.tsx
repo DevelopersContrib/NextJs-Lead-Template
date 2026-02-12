@@ -96,16 +96,15 @@ const BlogList = () => {
 
   return (
     <>
-      <section className="tw-py-24">
+      <section>
         <div className="container">
-          <div className="row">
+          <div className="row mb-4 text-center">
             <div className="col-xl-12">
-              <div className="title-center-circle">
-                <h2 className="tw-font-extrabold tw-text-5xl text-uppercase text-center tw-mb-14">
-                  Latest Blogs
-                </h2>
-              </div>
+              <span className="section-label">From the blog</span>
+              <h2 className="section-title tw-mb-4">Latest updates</h2>
             </div>
+          </div>
+          <div className="row">
             <div className="col-lg-12">
               <div className="row justify-content-center">
                 <div className="col-md-10">

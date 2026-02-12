@@ -1,5 +1,5 @@
-import './globals.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './globals.css';
 import Script from 'next/script';
 import { getData } from '@/lib/data'
 import { Metadata } from 'next';
