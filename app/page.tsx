@@ -58,7 +58,6 @@ export default async function Home() {
           <div className="hero-content text-center mx-auto">
             <span className="hero-badge">Join the community</span>
             <Logo domain={domain} logo={c.data.logo} />
-            <h1 className="hero-title text-capitalize">{title}</h1>
             <p className="hero-description">{description}</p>
             <div className="home-hero-form-box text-center mx-auto">
               <p className="hero-cta-headline">Get early access</p>
