@@ -28,7 +28,6 @@ export default async function Home() {
       ? c.data.background_url
       : "https://cdn.vnoc.com/background/tech4.jpg";
   const description = c.data.description;
-  const title = c.data.title;
   const twitter_url = c.data.twitter;
   const fb_url = c.data.fb;
   const linkedin_url = c.data.linkedin;
@@ -57,6 +56,17 @@ export default async function Home() {
         <div className="container">
           <div className="hero-content text-center mx-auto">
             <span className="hero-badge">Join the community</span>
+            <div className="hero-trust">
+              <span>Contrib platform</span>
+              <span className="hero-trust-sep" aria-hidden="true">
+                ·
+              </span>
+              <span>Remote-friendly</span>
+              <span className="hero-trust-sep" aria-hidden="true">
+                ·
+              </span>
+              <span>Free to join</span>
+            </div>
             <Logo domain={domain} logo={c.data.logo} />
             <p className="hero-description">{description}</p>
             <div className="home-hero-form-box text-center mx-auto">
