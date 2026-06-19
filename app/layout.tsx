@@ -1,7 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './globals.css';
 import Script from 'next/script';
-import { getData } from '@/lib/data'
+import { getData, getDomain } from '@/lib/data'
 import { Metadata } from 'next';
 import First100FoundersModalWrapper from "@/components/First100FoundersModalWrapper";
 
@@ -34,8 +34,18 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  const domain = getDomain();
+
   return (
     <html lang="en">
+      <head>
+        <Script
+          src="https://analytics.vnoc.com/tracker.js"
+          data-endpoint="https://analytics.vnoc.com/"
+          data-domain={domain}
+          strategy="afterInteractive"
+        />
+      </head>
       <First100FoundersModalWrapper />
       <body>{children}</body>
     </html>
