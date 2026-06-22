@@ -80,9 +80,9 @@ const formatDate = (dateString: string): string => {
   return `${month} ${day}, ${year} ${hours}:${minutes} ${ampm}`;
 };
 
-const BlogList = () => {
+const BlogList = ({ domain }: { domain?: string }) => {
   const { blog, loading } = useBlogStore();
-  useFetchBlog();
+  useFetchBlog(domain);
 
   const blogPost = blog.map((item: blogResponse) => ({
     id: item.id,

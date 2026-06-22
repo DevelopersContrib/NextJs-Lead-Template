@@ -7,7 +7,6 @@ import {
   faUsers
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Image from "next/image";
 import Container from "../components/Container";
 import WhyJoinUsIsometric from "../components/WhyJoinUsIsometric";
 import Footer from "../components/footer";
@@ -20,9 +19,17 @@ import { getData, getDomain, getScript, getTopsites } from "../lib/data";
 import BlogList from "./blog/components/BlogList";
 
 export default async function Home() {
-  const c = await getData();
   const domain = getDomain();
-  const topDomains = await getTopsites();
+  // Run the three independent external calls concurrently instead of
+  // sequentially so the page render is blocked only by the slowest one.
+  const [c, topDomains, html] = await Promise.all([
+    getData(),
+    getTopsites(),
+    getScript(
+      "https://e7lq80c199.execute-api.us-west-2.amazonaws.com/api1?key=5c1bde69a9e783c7edc2e603d8b25023&request=getcontent&url=" +
+        domain
+    ),
+  ]);
   const background =
     c.data.background_url !== undefined && c.data.background_url !== null
       ? c.data.background_url
@@ -32,10 +39,6 @@ export default async function Home() {
   const fb_url = c.data.fb;
   const linkedin_url = c.data.linkedin;
   const follow_link = "https://www.contrib.com/signup/follow/" + domain;
-  const html = await getScript(
-    "https://e7lq80c199.execute-api.us-west-2.amazonaws.com/api1?key=5c1bde69a9e783c7edc2e603d8b25023&request=getcontent&url=" +
-      domain
-  );
 
   return (
     <>
@@ -185,7 +188,7 @@ export default async function Home() {
       </section>
       <TopDomainsComponent domains={topDomains} />
       <section id="blog" className="home-section home-blog-section bg-light">
-        <BlogList />
+        <BlogList domain={domain} />
       </section>
       <section id="platform" className="home-section">
         <div className="container">

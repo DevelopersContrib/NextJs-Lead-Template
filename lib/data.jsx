@@ -1,5 +1,4 @@
 import { headers } from "next/headers";
-import axios from "axios";
 let DOMAIN = process.env.NEXT_PUBLIC_VERCEL_URL;
 
 export function getDomain() {
@@ -12,17 +11,14 @@ export function getDomain() {
 export async function getData() {
   const domain = getDomain();
   const url = process.env.CONTRIB_API1 + `&domain=${domain}`;
-  const res = await fetch(
-    url,
-    {
-      mode: "cors",
-      headers: {
-        "User-Agent": "Mozilla/5.0",
-      },
-      next: { revalidate: 3600 },
+  const res = await fetch(url, {
+    mode: "cors",
+    headers: {
+      "User-Agent": "Mozilla/5.0",
     },
-    30000
-  );
+    next: { revalidate: 3600 },
+    signal: AbortSignal.timeout(30000),
+  });
   if (!res.ok) {
     // This will activate the closest `error.js` Error Boundary
     throw new Error("Failed to fetch data");
@@ -46,8 +42,15 @@ export async function getTopsites() {
 
 export async function getScript(url) {
   try {
-    const res = await axios.get(url);
-    return res.data.data.content;
+    const res = await fetch(url, {
+      next: { revalidate: 3600 },
+      signal: AbortSignal.timeout(10000),
+    });
+    if (!res.ok) {
+      throw new Error(`getScript failed with status ${res.status}`);
+    }
+    const json = await res.json();
+    return json.data.content;
   } catch (e) {
     console.log("error getScript", e);
     return { error: "error getScript" };
